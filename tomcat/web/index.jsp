@@ -13,9 +13,8 @@
   <%
     System.out.println("hello jsp");
     String contextPath = request.getContextPath();
-    System.out.println(contextPath);
+    System.out.println("contexPath: " + contextPath);
     out.write(contextPath);
-    int i = 1 / 0;
   %>
   <h1>hi, jsp</h1>
   <body>

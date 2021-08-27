@@ -3,7 +3,7 @@
         <h1>Tabs标签页关闭前二次确认</h1>
         <br>
 
-        <Tabs type="card" closable @on-tab-remove="handleTabRemove">
+        <Tabs type="card" closable @on-tab-remove="handleTabRemove" :beforeRemove="handleBeforeRemove">
             <TabPane label="标签一" v-show="tab0" >标签一的内容</TabPane>
             <TabPane label="标签二" v-show="tab1">标签二的内容</TabPane>
             <TabPane label="标签三" v-show="tab2">标签三的内容</TabPane>
@@ -23,6 +23,21 @@
         methods: {
             handleTabRemove(name) {
                 this['tab' + name] = false;
+            },
+            handleBeforeRemove(index) {
+                console.log(index);
+                return new Promise((resolve, reject) => {
+                    this.$Modal.confirm({
+                        title: '关闭确认',
+                        content: '<p>您确认要关闭标签吗？</p>',
+                        onOk: () => {
+                            resolve();
+                        },
+                        onCancel: () => {
+                            reject();
+                        }
+                    })
+                });
             }
         }
     }

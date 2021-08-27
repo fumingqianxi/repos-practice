@@ -73,8 +73,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/components/Component4.vue')
   },
   {
+    path: '/component5',
+    component: () => import(/* webpackChunkName: "about" */ '../views/components/Component5.vue')
+  },
+  {
     path: '/',
-    redirect: '/table12'
+    redirect: '/app'
   }
 ]
 
