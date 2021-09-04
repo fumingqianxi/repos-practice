@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <custom-input>aaaaaaa</custom-input>
+            
+        </div>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+        Vue.component("custom-input",{
+            props:['value'],
+            template: `
+            <div class="demo-alert-box">
+                <slot></slot>
+                <strong>Error!</strong>
+            </div>
+            `
+        })
+        let app = new Vue({
+            el:"#app",
+            data:{
+                posts: [
+                    { title: "aaaaaabbb", content: "<h2>1qqqqqq</h2>"},
+                    { title: "bbbbbbfff", content: "<h2>1gggggg</h2>"},
+                    { title: "ccccccccc", content: "<h2>1kkkkkkk</h2>"}
+                ],
+                postFontSize: 1,
+                searchInfo: ''
+            },
+            methods: {
+                enlarge(e) {
+                    this.postFontSize += e;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

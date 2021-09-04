@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <label>搜索：<input type="text" v-model="search.keyword"></label>
+        <p><button @click="searchInfo()">搜索</button></p>
+        <p>{{search.keyword}}</p>
+        <p><a v-bind:href="result.site">{{result.title}}</a></p>
+    </div>
+
+    <script src="vue.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                search: {
+                    keyword: "尚硅谷"
+                },
+                result: {
+                }
+            },
+            methods: {
+                searchInfo() {
+                    console.log("searchInfo");
+                    $.get("mock/data.json", data => {
+                        console.log(data);
+                        data.items.forEach(element => {
+                            if (element.title === this.search.keyword) {
+                                this.result = element;
+                            }
+                        });
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

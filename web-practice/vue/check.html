@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style lang="less">
+        .spanclass {
+            display: inline-block;
+            height: 18px;
+            font-size: 12px;
+            margin-left: 12px;
+            line-height: 18px;
+            color: #2879ff;
+            padding: 1px 10px;
+            position: relative;
+        }
+        .spanclass::after {
+            content: "";
+            position: absolute;
+            background: #2879ff;
+            border-radius: 12px;
+            opacity: 0.1;
+            inset: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="w-check-top-header" slot="header">
+        <span style="font-size:12px;line-height:17px;color:#89919f;">最近一次考核</span><br>
+        <span
+            style="font-size:16px;font-weight:500;line-height:22px;color:#3f4755;cursor:pointer;">八月份考核</span>
+        <span class="spanclass">进行中</span>
+    </div>
+</body>
+</html>

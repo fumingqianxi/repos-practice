@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .block {
+            width:50px;
+            height:50px;
+            background-color:#ccc;
+            margin:10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <span>Multiline message is:</span>
+        <p style="white-space: pre-line;">{{ message }}</p>
+        <br>
+        <textarea placeholder="add multiple lines">{{message}}</textarea>
+        <hr>
+
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>
+        <hr>
+
+        <input type="checkbox" id="jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>Checked names: {{ checkedNames }}</span>
+        <hr>
+
+        <div id="example-5">
+            <select v-model="selected">
+              <option disabled value="">请选择</option>
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+        <hr>
+
+        <input v-model.trim="msg">
+        <span>msg: {{ msg }}</span>
+        <hr>
+
+        <alert-box>
+            Something bad happened.
+        </alert-box>
+        <hr>
+
+        <p id="p-id"></p>
+        <hr>
+
+        <div class="father">
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+        </div>
+    </div>
+
+    <script>
+        var p = document.getElementById("p-id");
+        p.innerText = '<h1>aaaa</h1>';
+    </script>
+
+    <script src="vue.min.js"></script>
+    <script>
+        Vue.component('alert-box', {
+            template: `
+                <div class="demo-alert-box">
+                <strong>Error!</strong>
+                <slot></slot>
+                </div>
+            `
+        })
+        let app = new Vue({
+            el:"#app",
+            data:{
+                message:"Hello Vue",
+                checked:true,
+                checkedNames: [],
+                selected: "",
+                msg: 1
+            }
+        })
+    </script>
+</body>
+</html>
