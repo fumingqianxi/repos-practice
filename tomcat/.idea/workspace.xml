@@ -20,10 +20,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/itheima/userinfo/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1680">
+            <state relative-caret-position="585">
               <caret line="60" column="26" lean-forward="false" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -35,30 +35,11 @@
       <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/itheima/userinfo/service/impl/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1650">
+            <state relative-caret-position="165">
               <caret line="72" column="36" lean-forward="false" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#717#718#0" expanded="true" />
-                <element signature="e#746#747#0" expanded="true" />
-                <element signature="e#801#802#0" expanded="true" />
-                <element signature="e#849#850#0" expanded="true" />
-                <element signature="e#906#907#0" expanded="true" />
-                <element signature="e#963#964#0" expanded="true" />
-                <element signature="e#1018#1019#0" expanded="true" />
-                <element signature="e#1050#1051#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/itheima/userinfo/dao/UserDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="25" column="20" lean-forward="false" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1689#1695#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -176,9 +157,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="55" />
-    <option name="y" value="21" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="27" />
+    <option name="y" value="18" />
     <option name="width" value="1835" />
     <option name="height" value="997" />
   </component>
@@ -197,9 +178,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -227,23 +205,15 @@
             </path>
             <path>
               <item name="tomcat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tomcat" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tomcat" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tomcat" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="userinfo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tomcat" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -393,7 +363,7 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -406,7 +376,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23122318" sideWeight="0.49339935" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23444206" sideWeight="0.49339935" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24588302" sideWeight="0.5066007" order="2" side_tool="true" content_ui="tabs" />
@@ -457,9 +427,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="25" column="20" lean-forward="false" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -772,38 +739,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/itheima/userinfo/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="60" column="26" lean-forward="false" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/itheima/userinfo/servlet/UpdateUserServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/itheima/userinfo/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="72" column="36" lean-forward="false" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#717#718#0" expanded="true" />
-            <element signature="e#746#747#0" expanded="true" />
-            <element signature="e#801#802#0" expanded="true" />
-            <element signature="e#849#850#0" expanded="true" />
-            <element signature="e#906#907#0" expanded="true" />
-            <element signature="e#963#964#0" expanded="true" />
-            <element signature="e#1018#1019#0" expanded="true" />
-            <element signature="e#1050#1051#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -817,30 +756,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/itheima/userinfo/domain/PageBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/itheima/userinfo/dao/impl/UserDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
           <caret line="39" column="32" lean-forward="true" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2533#2541#0" expanded="false" />
-            <element signature="e#3520#3528#0" expanded="false" />
-            <marker date="1630240208626" expanded="true" signature="606:624" ph="select * fro... user" />
-            <marker date="1630240208626" expanded="true" signature="886:940" ph="select * fro... user" />
-            <marker date="1630240208626" expanded="true" signature="1281:1332" ph="insert into user... " />
-            <marker date="1630240208626" expanded="true" signature="1576:1605" ph="delete from " />
-            <marker date="1630240208626" expanded="true" signature="1738:1769" ph="select * fro... user" />
-            <marker date="1630240208626" expanded="true" signature="1945:2036" ph="update user " />
-            <marker date="1630240208626" expanded="true" signature="3305:3336" ph="select * fro... user" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -856,6 +775,32 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="25" column="20" lean-forward="false" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/itheima/userinfo/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="72" column="36" lean-forward="false" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1689#1695#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/itheima/userinfo/domain/PageBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/itheima/userinfo/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="60" column="26" lean-forward="false" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

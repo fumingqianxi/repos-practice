@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--把对象的创建交给spring来管理-->
+    <!--<bean id="instanceFactory" class="com.itheima.spring.day01_eesy_03spring.factory.InstanceFactory"></bean>-->
+    <!--&lt;!&ndash;<bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"></bean>&ndash;&gt;-->
+    <!--<bean id="accountDao" class="com.itheima.spring.day01_eesy_03spring.dao.impl.AccountDaoImpl"></bean>-->
+    <!--<bean id="accountService" class="com.itheima.spring.day01_eesy_05DI.service.impl.AccountServiceImpl">-->
+        <!--<constructor-arg name="name" value="xiaoming"></constructor-arg>-->
+        <!--<constructor-arg name="age" value="18"></constructor-arg>-->
+        <!--<constructor-arg name="birthday" ref="now"></constructor-arg>-->
+    <!--</bean>-->
+    <!--<bean id="accountService2" class="com.itheima.spring.day01_eesy_05DI.service.impl.AccountServiceImpl2">-->
+        <!--<property name="age" value="20"></property>-->
+        <!--<property name="name" value="test"></property>-->
+        <!--<property name="birthday" ref="now"></property>-->
+    <!--</bean>-->
+    <!--<bean id="now" class="java.util.Date"></bean>-->
+
+    <bean id="accountService" class="com.itheima.spring.day02_eesy_02account_xmlioc.service.impl.AccountServiceImpl">
+        <property name="accountDao" ref="accountDao"></property>
+    </bean>
+
+    <bean id="accountDao" class="com.itheima.spring.day02_eesy_02account_xmlioc.dao.impl.AccountDaoImpl">
+        <property name="runner" ref="runner"></property>
+    </bean>
+
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
+        <constructor-arg name="ds" ref="dataSource"></constructor-arg>
+    </bean>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--连接数据库的必备信息-->
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/eesy"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="0510"></property>
+    </bean>
+
+    <context:component-scan base-package="com.itheima"></context:component-scan>
+</beans>
