@@ -6,17 +6,21 @@ import java.util.UUID;
 
 public class DemoTest {
     public static void main(String[] args) throws ParseException {
-        System.out.println("debug开始");
-        fun();
-        for (int i = 0; i < 10; i++) {
-            System.out.println(i);
+        String str = "aaa bbb";
+        int count = -1;
+        for (int i = 0; i < str.length(); i ++) {
+            if ((str.charAt(i)+"").equals(" ")) {
+                if (str.substring(0, i).equals(str.substring(i + 1))){
+                    count = i;
+                    break;
+                }
+            }
         }
-        System.out.println(null + ";" + "adasd");
-    }
-
-    public static void fun() {
-        for (int i = 0; i < 10; i++) {
-            System.out.println("fun: " + i);
+        System.out.println(count);
+        if (count == -1) {
+            System.out.println(str);
+        } else {
+            System.out.println(str.substring(0, count));
         }
     }
 }

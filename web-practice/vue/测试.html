@@ -9,9 +9,12 @@
 <body>
     <div id="app">
         <div>
-            <custom-input>aaaaaaa</custom-input>
+            <custom-input><h1>bbbb</h1>aaaaaaa</custom-input>
             
         </div>
+    </div>
+    <div id="app1">
+        <button @click="greet('aa', $event)">Greet1</button>
     </div>
     <script src="vue.min.js"></script>
     <script>
@@ -19,8 +22,8 @@
             props:['value'],
             template: `
             <div class="demo-alert-box">
-                <slot></slot>
                 <strong>Error!</strong>
+                <slot></slot>
             </div>
             `
         })
@@ -33,11 +36,16 @@
                     { title: "ccccccccc", content: "<h2>1kkkkkkk</h2>"}
                 ],
                 postFontSize: 1,
-                searchInfo: ''
+                searchInfo: '',
+                message: 'aaaaabbbb'
             },
             methods: {
                 enlarge(e) {
                     this.postFontSize += e;
+                },
+                greet (a, e) {
+                    alert(a);
+                    alert(e.target.tagName);
                 }
             }
         })

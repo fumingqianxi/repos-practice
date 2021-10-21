@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义js框架</title>
+    <script src="js/itcast.js"></script>
+</head>
+<body>
+    <div id="div1">
+        <div>aa</div>
+        <div>bb</div> 
+        div1.....
+    </div>
+    <div id="div2">
+        div2.....
+    </div>
+    <script>
+        var div1 = get("div1");
+        var div2 = get("div2");
+        alert(div1.childNodes[0].innerHTML);
+        alert(div2.innerHTML);
+    </script>
+</body>
+</html>
