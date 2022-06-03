@@ -1,4 +1,4 @@
-package com.jsh.util
+package com.itheima.util
 
 /**
  * @author {胡磊}
@@ -6,7 +6,7 @@ package com.jsh.util
  */
 class DemoTest {
   static void main(String[] args) {
-    
+
   }
 }
 
