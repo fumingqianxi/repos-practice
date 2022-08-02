@@ -2,3 +2,5 @@
 target
 /maven_java/axis.log
 /maven_java/maven_java.iml
+*.iml
+*.log
