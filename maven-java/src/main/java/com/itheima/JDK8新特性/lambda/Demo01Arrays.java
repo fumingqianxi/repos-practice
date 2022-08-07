@@ -1,4 +1,4 @@
-package com.itheima.thread.lambda;
+package com.itheima.JDK8新特性.lambda;
 
 import java.util.Arrays;
 import java.util.Comparator;

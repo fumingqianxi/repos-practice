@@ -1,4 +1,4 @@
-package com.itheima.thread.lambda;
+package com.itheima.JDK8新特性.lambda;
 
 public class Person {
     private String name;
