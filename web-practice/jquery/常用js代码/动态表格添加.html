@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        var select_type = document.getElementById("type");
+        var index_type = select_type.selectedIndex;
+        var val_type = select_type.options[index_type].value;
+        var select_level = document.getElementById("level");
+        var index_level = select_level.selectedIndex;
+        var val_level = select_level.options[index_level].value;
+        var val_name = document.getElementById("docName").value;
+
+        var table = document.getElementById("tbody");
+        table.innerHTML += "<tr>\n" +
+            "    <td>" + val_type + "</td>\n" +
+            "    <td>" + val_name + "</td>\n" +
+            "    <td>" + val_level + "</td>\n" +
+            "    <td id=\"td-docId\">" + docId + "</td>\n" +
+            "    <td>\n" +
+            "        <table>\n" +
+            "            <tr>\n" +
+            "                <td><a href=\"Parsing.jspa\">解析</a></td>\n" +
+            "                <td><a href=\"View.jspa\">查看</a></td>\n" +
+            "                <td><a href=\"javascript:void(0);\" onclick=\"delTr(this)\">删除</a></td>\n" +
+        "            </tr>\n" +
+        "        </table>\n" +
+        "    </td>\n" +
+        "</tr>";
+    </script>
+</head>
+<body>
+</body>
+</html>

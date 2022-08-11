@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        function fileUpLoad() {
+            var docId = document.getElementById("docId").value;
+            var URL =   "http://localhost:2990/jira/rest/trackingAnalysis/latest/fileUpLoad/getDocId?docId=" + docId;
+            AJS.$.ajax({
+                url: URL,
+                type: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                async: true,
+                success: function (data) {
+                }
+            });
+            upLoad();
+        }
+
+        function upLoad() {
+            var formData = new FormData();
+            var file = document.getElementById("fileUpLoad").files[0];
+            alert(file);
+            formData.append("file", file);
+            formData.append("username", "hhhh");
+            var URL = "http://localhost:2990/jira/rest/trackingAnalysis/latest/fileUpLoad/upLoad";
+            AJS.$.ajax({
+                url: URL,
+                type: "POST",
+                dataType: "JSON",
+                processData: false,
+                contentType: false,
+                data: formData,
+                success: function (data) {
+                    alert("上传成功");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

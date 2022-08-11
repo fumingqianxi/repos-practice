@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        function fun1() {
+            var div1 = document.getElementById("div1");
+            if (div1.style.display === "none") {
+                div1.style.display = "block";
+            } else {
+                div1.style.display = "none";
+            }
+        }
+        function fun2() {
+            var div1 = document.getElementById("div1");
+            if (div1.style.display === "none") {
+                $("#div1").show();
+            } else {
+                $("#div1").hide();
+            }
+        }
+        function fun3() {
+            var all = $("#func-ul").children("li");
+            //all代表所有的li元素，此时调用all[i].show()会报错，原因在于all[i]是js对象。所以只能有如下两种方式：
+            all[2].style.display = "block";
+            $("#" + all[2].id).show();
+            $("#li" + 2).css("display", "block");
+        }
+    </script>
+</head>
+<body>
+<input id="btn" type="button" onclick="fun1()" value="通过JS方式控制显示隐藏"/>
+<input id="btn2" type="button" onclick="fun2()" value="通过JQuery方式控制显示隐藏"/>
+<input id="btn3" type="button" onclick="fun3()" value="控制列表元素"/>
+<div id="div1">测试显示隐藏</div>
+<ul id="func-ul">
+    <li id="li1">苹果</li>
+    <li id="li2">香蕉</li>
+    <li id="li3">梨</li>
+</ul>
+</body>
+</html>

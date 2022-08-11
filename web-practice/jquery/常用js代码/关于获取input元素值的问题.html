@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+
+         //<input type="text" id="scade_udp.c" name="scade_udp.c">
+         //这种情况下，id中有特殊字符“.”，所以会出现以下几种情况：
+         //1、原生js支持获取值
+         document.getElementById("scade_udp.c").value
+         //2、因为特殊字符存在，jquery不支持获取值
+         $("#scade_udp.c").val()
+         //3、转义后支持获取值
+         $("#scade_udp\\.c").val()
+         //4、由于值是value属性值，所以以下均不能显示值
+         document.getElementById("scade_udp.c").innerHTML
+         document.getElementById("scade_udp.c").innerText
+         $("#scade_udp\\.c").html()
+         $("#scade_udp\\.c").text()
+    </script>
+</head>
+<body>
+<input type="text" id="scade_udp.c" name="scade_udp.c"/>
+</body>
+</html>
