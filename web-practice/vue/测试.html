@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns: xmlns:>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,16 +7,21 @@
     <title>Document</title>
 </head>
 <body>
+    <script src="vue.min.js"></script>
     <div id="app">
         <div>
             <custom-input><h1>bbbb</h1>aaaaaaa</custom-input>
-            
+
         </div>
     </div>
     <div id="app1">
         <button @click="greet('aa', $event)">Greet1</button>
     </div>
-    <script src="vue.min.js"></script>
+    <div id="app3">
+        <p>{{ foo }}</p>
+        <!-- 这里的 `foo` 不会更新！ -->
+        <button @click="foo = 'baz'">Change it</button>
+    </div>
     <script>
         Vue.component("custom-input",{
             props:['value'],
@@ -48,6 +53,16 @@
                     alert(e.target.tagName);
                 }
             }
+        })
+        var obj = {
+            foo: 'bar'
+        }
+
+        Object.freeze(obj)
+
+        let app3 = new Vue({
+            el:"#app3",
+            data: obj
         })
     </script>
 </body>
