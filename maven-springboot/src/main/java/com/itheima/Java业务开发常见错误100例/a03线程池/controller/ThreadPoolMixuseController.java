@@ -68,7 +68,7 @@ public class ThreadPoolMixuseController {
         return asyncCalcThreadPool.submit(calcTask()).get();
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void init() {
         printStats(threadPool);
 
