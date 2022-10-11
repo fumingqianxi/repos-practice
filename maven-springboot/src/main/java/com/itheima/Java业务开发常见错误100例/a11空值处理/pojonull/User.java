@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import lombok.Data;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/8/30 22:40
  */
 @Data

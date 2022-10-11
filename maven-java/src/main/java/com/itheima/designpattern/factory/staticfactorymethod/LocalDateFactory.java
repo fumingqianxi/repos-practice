@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * 使用静态工厂方法实现一个类似20200202的整数转换为LocalDate.
  *
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/6/3 22:57
  */
 public class LocalDateFactory {

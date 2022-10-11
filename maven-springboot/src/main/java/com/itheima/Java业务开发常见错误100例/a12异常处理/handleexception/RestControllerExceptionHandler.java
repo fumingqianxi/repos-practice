@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.HandlerMethod;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/9/3 11:26
  */
 @RestControllerAdvice

@@ -1,7 +1,7 @@
 package com.itheima.designpattern.templatemethod;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/6/4 10:19
  */
 public abstract class Setting {

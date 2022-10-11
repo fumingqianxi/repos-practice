@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/6/4 10:43
  */
 public class LocalSetting extends Setting{

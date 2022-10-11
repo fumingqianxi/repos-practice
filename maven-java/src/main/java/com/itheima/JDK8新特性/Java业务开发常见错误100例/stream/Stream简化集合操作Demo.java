@@ -13,7 +13,7 @@ import java.util.OptionalDouble;
 import org.junit.Test;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/8/5 16:29
  */
 public class Stream简化集合操作Demo {

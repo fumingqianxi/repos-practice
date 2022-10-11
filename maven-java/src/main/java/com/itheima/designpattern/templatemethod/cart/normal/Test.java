@@ -3,7 +3,7 @@ package com.itheima.designpattern.templatemethod.cart.normal;
 import java.util.HashMap;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/6/6 22:26
  */
 public class Test {

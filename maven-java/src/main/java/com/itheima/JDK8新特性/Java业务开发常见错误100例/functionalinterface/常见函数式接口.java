@@ -12,7 +12,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/8/5 16:06
  */
 public class 常见函数式接口 {

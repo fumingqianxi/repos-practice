@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/6/6 20:45
  */
 public class NormalUserCart {

@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/8/6 21:21
  */
 //订单商品类

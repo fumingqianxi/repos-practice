@@ -4,7 +4,7 @@ import com.itheima.designpattern.templatemethod.cart.normal.Item;
 import java.math.BigDecimal;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/6/6 23:20
  */
 public class InternalUserCart extends AbstractCart {

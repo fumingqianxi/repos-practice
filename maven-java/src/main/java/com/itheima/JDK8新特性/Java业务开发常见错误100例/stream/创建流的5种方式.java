@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 import org.junit.Test;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/8/6 21:37
  */
 public class 创建流的5种方式 {

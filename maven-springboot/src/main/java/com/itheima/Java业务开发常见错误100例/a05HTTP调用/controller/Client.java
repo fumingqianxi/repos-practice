@@ -4,7 +4,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/8/21 10:22
  */
 @FeignClient(name="clientsdk")

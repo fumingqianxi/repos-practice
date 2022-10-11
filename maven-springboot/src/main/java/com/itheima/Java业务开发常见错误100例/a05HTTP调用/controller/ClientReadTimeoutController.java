@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.apache.http.client.fluent.Request;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/8/20 23:24
  */
 @Slf4j

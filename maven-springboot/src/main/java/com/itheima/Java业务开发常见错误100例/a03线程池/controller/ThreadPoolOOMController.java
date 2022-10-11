@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 简单仿写了一遍
  *
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/8/11 17:48
  */
 @Slf4j

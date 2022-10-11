@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/8/6 12:38
  */
 public class 线程并发执行的5中操作方式 {

@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
 import org.junit.Test;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/8/5 17:37
  */
 public class ConcurrentHashMap对函数式API的增强 {

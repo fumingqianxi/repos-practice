@@ -1,7 +1,7 @@
 package com.itheima.JDK8新特性.Java业务开发常见错误100例.lambda;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/8/5 15:48
  */
 public class Lambda表达式简化线程匿名内部类 {

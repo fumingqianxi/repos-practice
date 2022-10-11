@@ -1,7 +1,7 @@
 package com.itheima.designpattern.factory.factorymethod;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/6/3 23:54
  */
 public class Test {

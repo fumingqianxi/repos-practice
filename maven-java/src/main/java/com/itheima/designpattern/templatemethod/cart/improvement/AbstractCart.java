@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author {胡磊}
+ * @author 胡磊
  * @since 2022/6/6 22:48
  */
 public abstract class AbstractCart {
