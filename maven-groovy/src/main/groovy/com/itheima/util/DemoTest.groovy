@@ -6,7 +6,9 @@ package com.itheima.util
  */
 class DemoTest {
   static void main(String[] args) {
-
+    List a = [1, 2, 3, 4]
+    List b = [2, 3, 4, 5]
+    print(a - (a - b))
   }
 }
 
