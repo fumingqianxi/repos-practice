@@ -1,4 +1,4 @@
-package com.itheima.API.date;
+package com.itheima.日期和时间.遗留日期时间类.date;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,7 +34,7 @@ import java.util.Date;
              "yyyy年MM月dd日 HH时mm分ss秒"
 
  */
-public class DateFormatDemo {
+public class DateFormatTest {
     public static void main(String[] args) throws ParseException {
         demo02();
     }
