@@ -10,7 +10,8 @@ import java.time.LocalTime;
  */
 public class LocalDateTimeTest {
   public static void main(String[] args) {
-    demo01();
+//    demo01();
+    demo02();
   }
 
   public static void demo01() {
@@ -21,5 +22,16 @@ public class LocalDateTimeTest {
     System.out.println(d); // 严格按照ISO 8601格式打印
     System.out.println(t); // 严格按照ISO 8601格式打印
     System.out.println(dt); // 严格按照ISO 8601格式打印
+  }
+
+  public static void demo02() {
+    LocalDateTime localDateTime = LocalDateTime.now(); // 当前日期和时间
+    System.out.println(localDateTime.getYear());
+    System.out.println(localDateTime.getMonth().getValue());
+    System.out.println(localDateTime.getDayOfMonth());
+    System.out.println(localDateTime.getDayOfWeek().getValue());
+    System.out.println(localDateTime.getHour());
+    System.out.println(localDateTime.getMinute());
+    System.out.println(localDateTime.getSecond());
   }
 }
