@@ -1,6 +1,7 @@
 package com.itheima.account.persist.impl;
 
 import com.itheima.account.persist.Account;
+import com.itheima.account.persist.AccountPersistException;
 import com.itheima.account.persist.AccountPersistService;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,6 +27,7 @@ public class AccountPersistServiceImpl implements AccountPersistService {
 
   private static final String ELEMENT_ROOT = "root";
   private static final String ELEMENT_ACCOUNTS = "accounts";
+  private static final String ELEMENT_ACCOUNT = "account";
   private static final String ELEMENT_ACCOUNT_ID = "id";
   private static final String ELEMENT_ACCOUNT_NAME = "name";
   private static final String ELEMENT_ACCOUNT_EMAIL = "email";
@@ -40,7 +42,7 @@ public class AccountPersistServiceImpl implements AccountPersistService {
     this.file = file;
   }
 
-  private Document readDocument() {
+  private Document readDocument() throws AccountPersistException {
     File dataFile = new File(file);
     if (!dataFile.exists()) {
       dataFile.getParentFile().mkdirs();
@@ -52,44 +54,55 @@ public class AccountPersistServiceImpl implements AccountPersistService {
     try {
       return reader.read(new File(file));
     } catch (DocumentException e) {
-      e.printStackTrace();
-      return null;
+      throw new AccountPersistException( "Unable to read persist data xml", e );
     }
   }
 
-  private void writeDocument(Document doc) {
+  private void writeDocument(Document doc) throws AccountPersistException {
     Writer out = null;
     try {
       out = new OutputStreamWriter(new FileOutputStream(file), "utf-8");
       XMLWriter writer = new XMLWriter(out, OutputFormat.createPrettyPrint());
       writer.write(doc);
     } catch (IOException e) {
-      e.printStackTrace();
+      throw new AccountPersistException( "Unable to write persist data xml", e );
     } finally {
       try {
         out.close();
       } catch (IOException e) {
-        e.printStackTrace();
+        throw new AccountPersistException( "Unable to close persist data xml writer", e );
       }
     }
   }
 
   @Override
-  public Account createAccount(Account account) {
-    Document document = readDocument();
-    Element accountsEle = document.getRootElement().element(ELEMENT_ACCOUNTS);
-    Element accountEle = accountsEle.addElement("account");
-    accountEle.addElement(ELEMENT_ACCOUNT_ID).setText(account.getId());
-    accountEle.addElement(ELEMENT_ACCOUNT_NAME).setText(account.getName());
-    accountEle.addElement(ELEMENT_ACCOUNT_EMAIL).setText(account.getEmail());
-    accountEle.addElement(ELEMENT_ACCOUNT_PASSWORD).setText(account.getPassword());
-    accountEle.addElement(ELEMENT_ACCOUNT_ACTIVATED).setText("true");
-    writeDocument(document);
+  public Account createAccount(Account account) throws AccountPersistException {
+    Document doc = readDocument();
+
+    Element accountsEle = doc.getRootElement().element(ELEMENT_ACCOUNTS);
+
+    accountsEle.add( buildAccountElement( account ) );
+
+    writeDocument( doc );
+
     return account;
   }
 
+  private Element buildAccountElement( Account account )
+  {
+    Element element = DocumentFactory.getInstance().createElement( ELEMENT_ACCOUNT );
+
+    element.addElement( ELEMENT_ACCOUNT_ID ).setText( account.getId() );
+    element.addElement( ELEMENT_ACCOUNT_NAME ).setText( account.getName() );
+    element.addElement( ELEMENT_ACCOUNT_EMAIL ).setText( account.getEmail() );
+    element.addElement( ELEMENT_ACCOUNT_PASSWORD ).setText( account.getPassword() );
+    element.addElement( ELEMENT_ACCOUNT_ACTIVATED ).setText( account.isActivated() ? "true" : "false" );
+
+    return element;
+  }
+
   @Override
-  public Account readAccount(String id) {
+  public Account readAccount(String id) throws AccountPersistException {
     Document doc = readDocument();
     Element accountsEle = doc.getRootElement().element(ELEMENT_ACCOUNTS);
     for (Element accountEle : (List<Element>) accountsEle.elements()) {
@@ -111,12 +124,33 @@ public class AccountPersistServiceImpl implements AccountPersistService {
   }
 
   @Override
-  public Account updateAccount(Account account) {
+  public Account updateAccount(Account account) throws AccountPersistException {
+    if ( readAccount( account.getId() ) != null )
+    {
+      deleteAccount( account.getId() );
+
+      return createAccount ( account );
+    }
+
     return null;
   }
 
   @Override
-  public void deleteAccount(String id) {
+  public void deleteAccount(String id) throws AccountPersistException {
+    Document doc = readDocument();
 
+    Element accountsEle = doc.getRootElement().element( ELEMENT_ACCOUNTS );
+
+    for ( Element accountEle : (List<Element>) accountsEle.elements() )
+    {
+      if ( accountEle.elementText( ELEMENT_ACCOUNT_ID ).equals( id ) )
+      {
+        accountEle.detach();
+
+        writeDocument( doc );
+
+        return;
+      }
+    }
   }
 }

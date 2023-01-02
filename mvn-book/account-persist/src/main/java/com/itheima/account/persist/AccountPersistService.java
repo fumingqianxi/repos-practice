@@ -5,12 +5,15 @@ package com.itheima.account.persist;
  * @since 2022/12/18 19:27
  */
 public interface AccountPersistService {
+  Account createAccount( Account account )
+      throws AccountPersistException;
 
-  Account createAccount(Account account);
+  Account readAccount( String id )
+      throws AccountPersistException;
 
-  Account readAccount(String id);
+  Account updateAccount( Account account )
+      throws AccountPersistException;
 
-  Account updateAccount(Account account);
-
-  void deleteAccount(String id);
+  void deleteAccount( String id )
+      throws AccountPersistException;
 }

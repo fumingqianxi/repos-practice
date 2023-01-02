@@ -1,5 +1,6 @@
 package com.itheima.account.email.impl;
 
+import com.itheima.account.email.AccountEmailException;
 import com.itheima.account.email.AccountEmailService;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -17,7 +18,7 @@ public class AccountEmailServiceImpl implements AccountEmailService {
   private String systemEmail;
 
   @Override
-  public void sendMail(String to, String subject, String htmlText) {
+  public void sendMail(String to, String subject, String htmlText) throws AccountEmailException {
     try {
       MimeMessage msg = javaMailSender.createMimeMessage();
       MimeMessageHelper msgHelper = new MimeMessageHelper(msg);
@@ -29,6 +30,7 @@ public class AccountEmailServiceImpl implements AccountEmailService {
       javaMailSender.send(msg);
     } catch (MessagingException e) {
       e.printStackTrace();
+      throw new AccountEmailException( "Faild to send mail.", e );
     }
   }
 

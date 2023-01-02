@@ -2,6 +2,7 @@ package com.itheima.account.captcha.impl;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
+import com.itheima.account.captcha.AccountCaptchaException;
 import com.itheima.account.captcha.AccountCaptchaService;
 import com.itheima.account.captcha.RandomGenerator;
 import java.awt.image.BufferedImage;
@@ -48,25 +49,25 @@ public class AccountCaptchaServiceImpl implements InitializingBean, AccountCaptc
     }
   }
 
-  public byte[] generateCaptchaImage(String captchaKey) {
+  public byte[] generateCaptchaImage(String captchaKey) throws AccountCaptchaException {
     String text = captchMap.get(captchaKey);
     if (text == null) {
-      throw new RuntimeException(captchaKey + "not found!");
+      throw new AccountCaptchaException( "Captch key '" + captchaKey + "' not found!" );
     }
     BufferedImage image = producer.createImage(text);
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     try {
       ImageIO.write(image, "jpg", out);
     } catch (IOException e) {
-      throw new RuntimeException("Failed to write captcha stream!", e);
+      throw new AccountCaptchaException( "Failed to write captcha stream!", e );
     }
     return out.toByteArray();
   }
 
-  public boolean validateCaptcha(String captchaKey, String captchaValue) {
+  public boolean validateCaptcha(String captchaKey, String captchaValue) throws AccountCaptchaException {
     String text = captchMap.get(captchaKey);
     if (text == null) {
-      throw new RuntimeException(captchaKey + "not found!");
+      throw new AccountCaptchaException( "Captch key '" + captchaKey + "' not found!" );
     }
     if (text.equals(captchaValue)) {
       captchMap.remove(captchaKey);

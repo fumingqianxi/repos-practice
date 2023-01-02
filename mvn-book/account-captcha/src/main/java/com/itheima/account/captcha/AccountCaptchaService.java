@@ -7,12 +7,14 @@ import java.util.List;
  * @since 2022/12/27 19:27
  */
 public interface AccountCaptchaService {
+  String generateCaptchaKey()
+      throws AccountCaptchaException;
 
-  String generateCaptchaKey();
+  byte[] generateCaptchaImage( String captchaKey )
+      throws AccountCaptchaException;
 
-  byte[] generateCaptchaImage(String captchaKey);
-
-  boolean validateCaptcha(String captchaKey, String captchaValue);
+  boolean validateCaptcha( String captchaKey, String captchaValue )
+      throws AccountCaptchaException;
 
   List<String> getPreDefinedTexts();
 

@@ -47,7 +47,7 @@ public class AccountCaptchaServiceTest {
   }
 
   @Test
-  public void testValidateCaptchaCorrect() {
+  public void testValidateCaptchaCorrect() throws Exception {
     List<String> preDefinedTexts = new ArrayList<String>();
     preDefinedTexts.add("12345");
     preDefinedTexts.add("abcde");
@@ -58,7 +58,7 @@ public class AccountCaptchaServiceTest {
   }
 
   @Test
-  public void testValidateCaptchaInCorrect() {
+  public void testValidateCaptchaInCorrect() throws Exception {
     List<String> preDefinedTexts = new ArrayList<String>();
     preDefinedTexts.add("12345");
     service.setPreDefinedTexts(preDefinedTexts);
