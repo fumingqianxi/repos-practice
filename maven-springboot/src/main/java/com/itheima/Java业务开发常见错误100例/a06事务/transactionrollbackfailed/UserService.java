@@ -48,6 +48,7 @@ public class UserService {
   public int createUserRight(String name) {
     try {
       self.createUserPublic(new UserEntity(name));
+      log.info("查询得到的数据长度为{}", userRepository.findByName(name).size());
     } catch (Exception ex) {
       log.error("create user failed because {}", ex.getMessage());
     }
@@ -64,7 +65,9 @@ public class UserService {
   //可以传播出异常
   @Transactional
   public void createUserPublic(UserEntity entity) {
+    userRepository.delete(entity);
     userRepository.save(entity);
+    log.info("查询得到的数据长度为{}", userRepository.findByName(entity.getName()).size());
     if (entity.getName().contains("test"))
       throw new RuntimeException("invalid username!");
   }
