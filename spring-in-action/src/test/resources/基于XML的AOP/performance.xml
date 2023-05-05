@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	">
+
+	<!-- 这个地方有个坑，如果id设置为performance，则该bean创建不成功，因为与底下pointcut重名 -->
+	<bean id="girlPerformance" class="com.itheima.spring实战.AOP.基于XML的AOP.GirlPerformance"/>
+	
+	<!-- 声明Audience bean -->
+	<bean id="audience" class="com.itheima.spring实战.AOP.基于XML的AOP.aspect.Audience"/>
+
+	<aop:config>
+		<aop:aspect ref="audience">
+			<aop:pointcut id="performance" expression="execution(* com.itheima.spring实战.AOP.基于XML的AOP.GirlPerformance.perform(..))"/>
+			<aop:before method="silenceCellPhones" pointcut-ref="performance" />
+			<aop:before method="takeSeats" pointcut-ref="performance" />
+			<aop:after-returning method="applause" pointcut-ref="performance" />
+			<aop:after-throwing method="demandRefund" pointcut-ref="performance" />
+			<!-- 等同上面四个 -->
+			<aop:around method="watchPerformance" pointcut-ref="performance"/>
+		</aop:aspect>
+	</aop:config>
+
+	<aop:aspectj-autoproxy />
+
+</beans>
