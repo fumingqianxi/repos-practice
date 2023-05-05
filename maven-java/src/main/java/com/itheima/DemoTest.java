@@ -1,13 +1,17 @@
 package com.itheima;
 
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Date;
 
 public class DemoTest {
   public static void main(String[] args) throws ParseException {
-    method03();
+//    method04("group2/M00/09/07/oYYBAGHdE2-ABP27AADAAOv5PNo673.xls");
+    method05();
   }
 
   public static void method01() {
@@ -31,5 +35,30 @@ public class DemoTest {
     System.out.println(localDateTime);
     ZonedDateTime zonedDateTime = ZonedDateTime.now(ZoneId.of("Asia/Shanghai"));
     System.out.println(zonedDateTime);
+  }
+
+  /**
+   * 测试删除掉url部分前缀
+   */
+  public static void method04(String url) {
+    if (url.matches("group\\d/M00/.*")) {
+      url = url.replaceFirst("group\\d/M00/", "");
+    }
+    System.out.println(url);
+  }
+
+  /**
+   * 测试两个日期的小时差.
+   */
+  public static void method05() {
+    Date date1 = new Date();
+    Date date2 = new Date(date1.getTime() + 9100000);
+    // 必须用1000.0，否则结果不会保留小数
+    double diff = (date2.getTime() - date1.getTime()) / 1000.0 / 60 / 60;
+    NumberFormat numberInstance = NumberFormat.getNumberInstance();
+    numberInstance.setMaximumFractionDigits(2);
+    numberInstance.setRoundingMode(RoundingMode.HALF_UP);
+    diff = Double.parseDouble(numberInstance.format(diff));
+    System.out.println(diff);
   }
 }
