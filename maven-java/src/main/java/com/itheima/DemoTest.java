@@ -52,12 +52,13 @@ public class DemoTest {
    */
   public static void method05() {
     Date date1 = new Date();
-    Date date2 = new Date(date1.getTime() + 9100000);
+    Date date2 = new Date(date1.getTime() + 9100000000L);
     // 必须用1000.0，否则结果不会保留小数
     double diff = (date2.getTime() - date1.getTime()) / 1000.0 / 60 / 60;
     NumberFormat numberInstance = NumberFormat.getNumberInstance();
     numberInstance.setMaximumFractionDigits(2);
     numberInstance.setRoundingMode(RoundingMode.HALF_UP);
+    numberInstance.setGroupingUsed(false);
     diff = Double.parseDouble(numberInstance.format(diff));
     System.out.println(diff);
   }
