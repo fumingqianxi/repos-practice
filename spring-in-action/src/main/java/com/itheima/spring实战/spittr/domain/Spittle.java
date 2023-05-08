@@ -1,4 +1,4 @@
-package com.itheima.spring实战.spittr;
+package com.itheima.spring实战.spittr.domain;
 
 import java.util.Date;
 import org.apache.commons.lang3.builder.EqualsBuilder;

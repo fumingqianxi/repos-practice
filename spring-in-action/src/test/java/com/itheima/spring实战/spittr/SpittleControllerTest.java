@@ -1,23 +1,19 @@
 package com.itheima.spring实战.spittr;
 
-import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.hasItems;
-import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
-import com.itheima.spring实战.spittr.data.SpittleRepository;
+import com.itheima.spring实战.spittr.db.SpittleRepository;
+import com.itheima.spring实战.spittr.domain.Spittle;
 import com.itheima.spring实战.spittr.web.SpittleController;
 import java.util.ArrayList;
 import java.util.Date;

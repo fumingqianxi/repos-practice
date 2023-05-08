@@ -12,7 +12,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 
-import com.itheima.spring实战.spittr.data.SpitterRepository;
+import com.itheima.spring实战.spittr.db.SpitterRepository;
+import com.itheima.spring实战.spittr.domain.Spitter;
 import com.itheima.spring实战.spittr.web.SpitterController;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;

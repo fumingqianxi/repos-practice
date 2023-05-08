@@ -1,4 +1,4 @@
-package com.itheima.spring实战.spittr;
+package com.itheima.spring实战.spittr.domain;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

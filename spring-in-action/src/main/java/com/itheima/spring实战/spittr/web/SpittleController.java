@@ -1,11 +1,10 @@
 package com.itheima.spring实战.spittr.web;
 
-import com.itheima.spring实战.spittr.Spittle;
-import com.itheima.spring实战.spittr.data.SpittleRepository;
+import com.itheima.spring实战.spittr.domain.Spittle;
+import com.itheima.spring实战.spittr.db.SpittleRepository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;

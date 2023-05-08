@@ -3,10 +3,9 @@ package com.itheima.spring实战.spittr.web;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-import com.itheima.spring实战.spittr.Spitter;
-import com.itheima.spring实战.spittr.data.SpitterRepository;
+import com.itheima.spring实战.spittr.domain.Spitter;
+import com.itheima.spring实战.spittr.db.SpitterRepository;
 import javax.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
