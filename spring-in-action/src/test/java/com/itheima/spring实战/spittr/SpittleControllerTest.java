@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
-import com.itheima.spring实战.spittr.db.SpittleRepository;
+import com.itheima.spring实战.spittr.dao.SpittleRepository;
 import com.itheima.spring实战.spittr.domain.Spittle;
 import com.itheima.spring实战.spittr.web.SpittleController;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class SpittleControllerTest {
     SpittleRepository mockRepository = mock(SpittleRepository.class);
     when(mockRepository.findSpittles(238900, 50))
         .thenReturn(expectedSpittles);
-    
+
     SpittleController controller = new SpittleController(mockRepository);
     MockMvc mockMvc = standaloneSetup(controller)
         .setSingleView(new InternalResourceView("/WEB-INF/views/spittles.jsp"))
@@ -39,16 +39,16 @@ public class SpittleControllerTest {
     mockMvc.perform(get("/spittles?max=238900&count=50"))
       .andExpect(view().name("spittles"))
       .andExpect(model().attributeExists("spittleList"))
-      .andExpect(model().attribute("spittleList", 
+      .andExpect(model().attribute("spittleList",
                  hasItems(expectedSpittles.toArray())));
   }
-  
+
   @Test
   public void testSpittle() throws Exception {
     Spittle expectedSpittle = new Spittle("Hello", new Date());
     SpittleRepository mockRepository = mock(SpittleRepository.class);
-    when(mockRepository.findOne(12345)).thenReturn(expectedSpittle);
-    
+    when(mockRepository.findOne(12345L)).thenReturn(expectedSpittle);
+
     SpittleController controller = new SpittleController(mockRepository);
     MockMvc mockMvc = standaloneSetup(controller).build();
 
@@ -66,14 +66,12 @@ public class SpittleControllerTest {
 
     mockMvc.perform(post("/spittles")
            .param("message", "Hello World") // this works, but isn't really testing what really happens
-           .param("longitude", "-81.5811668")
-           .param("latitude", "28.4159649")
            )
            .andExpect(redirectedUrl("/spittles"));
-    
-    verify(mockRepository, atLeastOnce()).save(new Spittle(null, "Hello World", new Date(), -81.5811668, 28.4159649));
+
+    verify(mockRepository, atLeastOnce()).save(new Spittle(null, "Hello World", new Date()));
   }
-  
+
   private List<Spittle> createSpittleList(int count) {
     List<Spittle> spittles = new ArrayList<Spittle>();
     for (int i=0; i < count; i++) {

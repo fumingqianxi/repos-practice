@@ -1,4 +1,4 @@
-package com.itheima.spring实战.jdbc.dao.jdbc;
+package com.itheima.spring实战.jdbc.dao.impl;
 
 import com.itheima.spring实战.jdbc.dao.JdbcTemplateSpitterRepository;
 import com.itheima.spring实战.jdbc.domain.JdbcSpitter;

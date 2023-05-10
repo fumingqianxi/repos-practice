@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 
-import com.itheima.spring实战.spittr.db.SpitterRepository;
+import com.itheima.spring实战.spittr.dao.SpitterRepository;
 import com.itheima.spring实战.spittr.domain.Spitter;
 import com.itheima.spring实战.spittr.web.SpitterController;
 import org.junit.Test;
@@ -32,16 +32,15 @@ public class SpitterControllerTest {
   @Test
   public void shouldProcessRegistration() throws Exception {
     SpitterRepository mockRepository = mock(SpitterRepository.class);
-    Spitter unsaved = new Spitter("jbauer", "24hours", "Jack", "Bauer", "jbauer@ctu.gov");
-    Spitter saved = new Spitter(24L, "jbauer", "24hours", "Jack", "Bauer", "jbauer@ctu.gov");
+    Spitter unsaved = new Spitter(null, "jbauer", "24hours", "Jack Bauer", "jbauer@ctu.gov");
+    Spitter saved = new Spitter(24L, "jbauer", "24hours", "Jack Bauer", "jbauer@ctu.gov");
     when(mockRepository.save(unsaved)).thenReturn(saved);
     
     SpitterController controller = new SpitterController(mockRepository);
     MockMvc mockMvc = standaloneSetup(controller).build();
 
     mockMvc.perform(post("/spitter/register")
-           .param("firstName", "Jack")
-           .param("lastName", "Bauer")
+           .param("fullName", "Jack Bauer")
            .param("username", "jbauer")
            .param("password", "24hours")
            .param("email", "jbauer@ctu.gov"))
@@ -59,9 +58,9 @@ public class SpitterControllerTest {
     mockMvc.perform(post("/spitter/register"))
         .andExpect(status().isOk())
         .andExpect(view().name("registerForm"))
-        .andExpect(model().errorCount(5))
+        .andExpect(model().errorCount(4))
         .andExpect(model().attributeHasFieldErrors(
-            "spitter", "firstName", "lastName", "username", "password", "email"));
+            "spitter", "fullName", "username", "password", "email"));
   }
 
 }

@@ -11,8 +11,6 @@
     <div class="spittleForm">
       <h1>Spit it out...</h1>
       <form method="POST" name="spittleForm">
-        <input type="hidden" name="latitude">
-        <input type="hidden" name="longitude">
         <textarea name="message" cols="80" rows="5"></textarea><br/>
         <input type="submit" value="Add" />
       </form>
@@ -25,7 +23,6 @@
             <div class="spittleMessage"><c:out value="${spittle.message}" /></div>
             <div>
               <span class="spittleTime"><c:out value="${spittle.time}" /></span>
-              <span class="spittleLocation">(<c:out value="${spittle.latitude}" />, <c:out value="${spittle.longitude}" />)</span>
             </div>
           </li>
         </c:forEach>

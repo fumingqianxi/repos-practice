@@ -1,10 +1,10 @@
 package com.itheima.spring实战.spittr.web;
 
 import com.itheima.spring实战.spittr.domain.Spittle;
-import com.itheima.spring实战.spittr.db.SpittleRepository;
-import java.util.ArrayList;
+import com.itheima.spring实战.spittr.dao.SpittleRepository;
 import java.util.Date;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,35 +26,29 @@ public class SpittleController {
 
   public SpittleController() {}
 
-//  @Autowired
+  @Autowired
   public SpittleController(SpittleRepository spittleRepository) {
     this.spittleRepository = spittleRepository;
   }
 
-  @RequestMapping(method=RequestMethod.GET)
+  @RequestMapping(method = RequestMethod.GET)
   public List<Spittle> spittles(
       @RequestParam(value = "max", defaultValue = MAX_LONG_AS_STRING) long max,
       @RequestParam(value = "count", defaultValue = "20") int count) {
-    List<Spittle> expectedSpittles = createSpittleList(50);
-//    return spittleRepository.findSpittles(max, count);
-    return expectedSpittles;
+    return spittleRepository.findSpittles(max, count);
   }
 
-  @RequestMapping(value="/{spittleId}", method= RequestMethod.GET)
+  @RequestMapping(value = "/{spittleId}", method = RequestMethod.GET)
   public String spittle(
       @PathVariable("spittleId") long spittleId,
       Model model) {
-//    model.addAttribute(spittleRepository.findOne(spittleId));
-    Spittle expectedSpittle = new Spittle("Hello", new Date());
-    model.addAttribute(expectedSpittle);
+    model.addAttribute(spittleRepository.findOne(spittleId));
     return "spittle";
   }
 
-  private List<Spittle> createSpittleList(int count) {
-    List<Spittle> spittles = new ArrayList<Spittle>();
-    for (int i=0; i < count; i++) {
-      spittles.add(new Spittle("Spittle " + i, new Date()));
-    }
-    return spittles;
+  @RequestMapping(method = RequestMethod.POST)
+  public String saveSpittle(SpittleForm form, Model model) throws Exception {
+    spittleRepository.save(new Spittle(null, form.getMessage(), new Date()));
+    return "redirect:/spittles";
   }
 }

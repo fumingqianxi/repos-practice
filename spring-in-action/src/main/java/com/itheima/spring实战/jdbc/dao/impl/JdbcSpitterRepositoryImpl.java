@@ -1,4 +1,4 @@
-package com.itheima.spring实战.jdbc.dao.jdbc;
+package com.itheima.spring实战.jdbc.dao.impl;
 
 import com.itheima.spring实战.jdbc.domain.JdbcSpitter;
 import java.sql.Connection;
@@ -15,10 +15,10 @@ import javax.sql.DataSource;
 public class JdbcSpitterRepositoryImpl implements com.itheima.spring实战.jdbc.dao.JdbcSpitterRepository {
 
   private static final String SQL_INSERT_SPITTER =
-      "insert into spitter (username, password, full_name) values (?, ?, ?)";
+      "insert into spitter (username, password, full_name, update_by_email) values (?, ?, ?, ?)";
 
   private static final String SQL_UPDATE_SPITTER =
-      "update spitter set username = ?, password = ?, full_name = ? where id = ?";
+      "update spitter set username = ?, password = ?, full_name = ?, update_by_email = ? where id = ?";
 
   private static final String SQL_SELECT_SPITTER =
       "select id, username, password, full_name from spitter where id = ?";
@@ -42,6 +42,7 @@ public class JdbcSpitterRepositoryImpl implements com.itheima.spring实战.jdbc.
       stmt.setString(1, spitter.getUsername());
       stmt.setString(2, spitter.getPassword());
       stmt.setString(3, spitter.getFullName());
+      stmt.setLong(4, spitter.isUpdateByEmail() ? 1 : 0);
       stmt.execute();
     } catch (SQLException e) {
       e.printStackTrace();
@@ -70,6 +71,7 @@ public class JdbcSpitterRepositoryImpl implements com.itheima.spring实战.jdbc.
       stmt.setString(1, spitter.getUsername());
       stmt.setString(2, spitter.getPassword());
       stmt.setString(3, spitter.getFullName());
+      stmt.setLong(4, spitter.isUpdateByEmail() ? 1 : 0);
       stmt.execute();
     } catch (SQLException | ClassNotFoundException e) {
       e.printStackTrace();
@@ -97,7 +99,8 @@ public class JdbcSpitterRepositoryImpl implements com.itheima.spring实战.jdbc.
       stmt.setString(1, spitter.getUsername());
       stmt.setString(2, spitter.getPassword());
       stmt.setString(3, spitter.getFullName());
-      stmt.setLong(4, spitter.getId());
+      stmt.setLong(4, spitter.isUpdateByEmail() ? 1 : 0);
+      stmt.setLong(5, spitter.getId());
       stmt.execute();
     } catch (SQLException e) {
       e.printStackTrace();

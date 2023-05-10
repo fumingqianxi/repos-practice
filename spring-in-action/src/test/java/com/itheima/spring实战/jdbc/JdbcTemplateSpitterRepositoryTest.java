@@ -2,7 +2,6 @@ package com.itheima.spring实战.jdbc;
 
 import com.itheima.spring实战.jdbc.config.JdbcConfig;
 import com.itheima.spring实战.jdbc.dao.JdbcTemplateSpitterRepository;
-import com.itheima.spring实战.jdbc.dao.jdbc.JdbcSpitterRepositoryImpl;
 import com.itheima.spring实战.jdbc.domain.JdbcSpitter;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @since 2023/4/24 17:07
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath*:/*/*.xml")
+@ContextConfiguration(locations = "classpath*:/xml装配bean/*.xml")
 //@ContextConfiguration(classes = CDPlayerConfig.class)
 public class CDPlayerTest {
   @Rule

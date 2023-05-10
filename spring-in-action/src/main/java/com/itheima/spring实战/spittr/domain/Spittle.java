@@ -1,32 +1,57 @@
 package com.itheima.spring实战.spittr.domain;
 
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+@Entity
+@NoArgsConstructor
+@Table(name = "spittle")
 public class Spittle {
 
-  private final Long id;
-  private final String message;
-  private final Date time;
-  private Double latitude;
-  private Double longitude;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  @Column
+  private String message;
+
+  @Column(name = "posted_time")
+  private Date time;
 
   public Spittle(String message, Date time) {
-    this(null, message, time, null, null);
+    this(null, message, time);
   }
   
-  public Spittle(Long id, String message, Date time, Double longitude, Double latitude) {
+  public Spittle(Long id, String message, Date time) {
     this.id = id;
     this.message = message;
     this.time = time;
-    this.longitude = longitude;
-    this.latitude = latitude;
   }
 
   public long getId() {
     return id;
   }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public void setTime(Date time) {
+    this.time = time;
+  }
+
 
   public String getMessage() {
     return message;
@@ -34,14 +59,6 @@ public class Spittle {
 
   public Date getTime() {
     return time;
-  }
-  
-  public Double getLongitude() {
-    return longitude;
-  }
-  
-  public Double getLatitude() {
-    return latitude;
   }
   
   @Override
@@ -53,5 +70,4 @@ public class Spittle {
   public int hashCode() {
     return HashCodeBuilder.reflectionHashCode(this, "id", "time");
   }
-  
 }

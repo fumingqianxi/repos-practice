@@ -1,8 +1,8 @@
 package com.itheima.spring实战.jdbc.config;
 
 import com.itheima.spring实战.jdbc.dao.JdbcTemplateSpitterRepository;
-import com.itheima.spring实战.jdbc.dao.jdbc.JdbcSpitterRepositoryImpl;
-import com.itheima.spring实战.jdbc.dao.jdbc.JdbcTemplateSpitterRepositoryImpl;
+import com.itheima.spring实战.jdbc.dao.impl.JdbcSpitterRepositoryImpl;
+import com.itheima.spring实战.jdbc.dao.impl.JdbcTemplateSpitterRepositoryImpl;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

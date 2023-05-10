@@ -1,7 +1,7 @@
 package com.itheima.spring实战.jdbc;
 
 import com.itheima.spring实战.jdbc.config.JdbcConfig;
-import com.itheima.spring实战.jdbc.dao.jdbc.JdbcSpitterRepositoryImpl;
+import com.itheima.spring实战.jdbc.dao.impl.JdbcSpitterRepositoryImpl;
 import com.itheima.spring实战.jdbc.domain.JdbcSpitter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +26,7 @@ public class JdbcSpitterRepositoryTest {
     spitter.setUsername("test");
     spitter.setPassword("123456");
     spitter.setFullName("test");
+    spitter.setUpdateByEmail(false);
     jdbcSpitterRepository.addSpitter(spitter);
   }
 
@@ -35,6 +36,7 @@ public class JdbcSpitterRepositoryTest {
     spitter.setUsername("testNoDataSource");
     spitter.setPassword("123456");
     spitter.setFullName("test");
+    spitter.setUpdateByEmail(true);
     jdbcSpitterRepository.addSpitter(spitter);
   }
 
