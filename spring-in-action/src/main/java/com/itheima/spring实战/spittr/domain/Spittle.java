@@ -36,7 +36,7 @@ public class Spittle {
     this.time = time;
   }
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 

@@ -9,4 +9,6 @@ public interface SpittleRepository extends JpaRepository<Spittle, Long>, Spittle
 
   @Query(value = "select * from spittle where id < ?1 ORDER BY posted_time DESC LIMIT ?2", nativeQuery=true)
   List<Spittle> findSpittles(long max, int count);
+
+  Spittle findByMessage(String message);
 }
