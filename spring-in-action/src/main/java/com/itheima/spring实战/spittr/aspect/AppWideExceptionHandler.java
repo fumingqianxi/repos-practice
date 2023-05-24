@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class AppWideExceptionHandler {
 
   @ExceptionHandler(DuplicateSpittleException.class)
-  public String handleNotFound() {
-    return "error/duplicate";
+  public void handleNotFound(Exception e) {
+    System.out.println("AppWideExceptionHandler拦截到异常" + e.getMessage());
   }
-
 }

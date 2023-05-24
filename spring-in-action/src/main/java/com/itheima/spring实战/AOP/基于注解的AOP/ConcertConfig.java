@@ -2,6 +2,7 @@ package com.itheima.spring实战.AOP.基于注解的AOP;
 
 import com.itheima.spring实战.AOP.基于注解的AOP.aspect.Audience;
 import com.itheima.spring实战.AOP.基于注解的AOP.aspect.AudienceAround;
+import com.itheima.spring实战.AOP.基于注解的AOP.aspect.AudienceAroundLog;
 import com.itheima.spring实战.AOP.基于注解的AOP.aspect.EncoreableIntroducer;
 import com.itheima.spring实战.AOP.基于注解的AOP.aspect.TrackCounter;
 import com.itheima.spring实战.装配bean.model.BlankDisc;
@@ -30,6 +31,11 @@ public class ConcertConfig {
   @Bean
   public AudienceAround audienceAround() {
     return new AudienceAround();
+  }
+
+  @Bean
+  public AudienceAroundLog audienceAroundLog() {
+    return new AudienceAroundLog();
   }
 
   @Bean

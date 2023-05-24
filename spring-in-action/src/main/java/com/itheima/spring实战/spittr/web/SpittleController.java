@@ -57,7 +57,6 @@ public class SpittleController {
 
   @RequestMapping(value = "/save", method = RequestMethod.POST)
   public String saveSpittle(SpittleForm form) throws Exception {
-    System.out.println(form);
     Spittle spittle = spittleRepository.findByMessage(form.getMessage());
     if (spittle != null) {
       throw new DuplicateSpittleException(500, "重复数据");
