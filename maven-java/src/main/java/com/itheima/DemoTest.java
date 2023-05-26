@@ -1,5 +1,6 @@
 package com.itheima;
 
+import com.google.common.base.CaseFormat;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -11,7 +12,9 @@ import java.util.Date;
 public class DemoTest {
   public static void main(String[] args) throws ParseException {
 //    method04("group2/M00/09/07/oYYBAGHdE2-ABP27AADAAOv5PNo673.xls");
-    method05();
+//    method05();
+//    method06();
+    method07("ArrayIndexOutOfBoundsException");
   }
 
   public static void method01() {
@@ -61,5 +64,25 @@ public class DemoTest {
     numberInstance.setGroupingUsed(false);
     diff = Double.parseDouble(numberInstance.format(diff));
     System.out.println(diff);
+  }
+
+  /**
+   * 测试获取异常类名称.
+   */
+  public static void method06() {
+    try{
+      int i = 1 / 0;
+    } catch (Exception e) {
+      System.out.println(e.getClass().getSimpleName());
+    }
+  }
+
+  /**
+   * 测试将驼峰字符串转为大写下划线.
+   *
+   * @param str 原字符串
+   */
+  public static void method07(String str) {
+    System.out.println(CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, str));
   }
 }
