@@ -1,6 +1,7 @@
 package com.itheima;
 
 import com.google.common.base.CaseFormat;
+import com.itheima.enums.SysErrCodeEnums;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -8,13 +9,14 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
+import org.apache.commons.lang3.EnumUtils;
 
 public class DemoTest {
   public static void main(String[] args) throws ParseException {
 //    method04("group2/M00/09/07/oYYBAGHdE2-ABP27AADAAOv5PNo673.xls");
 //    method05();
 //    method06();
-    method07("ArrayIndexOutOfBoundsException");
+    method08("arrayIndexOutOfBoundsException");
   }
 
   public static void method01() {
@@ -72,7 +74,7 @@ public class DemoTest {
   public static void method06() {
     try{
       int i = 1 / 0;
-    } catch (Exception e) {
+    } catch (Throwable e) {
       System.out.println(e.getClass().getSimpleName());
     }
   }
@@ -82,7 +84,24 @@ public class DemoTest {
    *
    * @param str 原字符串
    */
-  public static void method07(String str) {
-    System.out.println(CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, str));
+  public static String method07(String str) {
+    String result = CaseFormat.UPPER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, str);
+    System.out.println(result);
+    return result;
+  }
+
+  /**
+   * 测试获取枚举类对象.
+   *
+   * @param name 对象名称
+   */
+  public static void method08(String name) {
+    String exName = method07(name);
+    SysErrCodeEnums anEnum = EnumUtils.getEnum(SysErrCodeEnums.class, exName);
+    if (anEnum != null) {
+      System.out.println(anEnum.getDesc());
+    } else {
+      System.out.println("未找到对应的对象");
+    }
   }
 }
