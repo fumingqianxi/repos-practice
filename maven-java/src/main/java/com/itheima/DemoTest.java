@@ -3,12 +3,17 @@ package com.itheima;
 import com.google.common.base.CaseFormat;
 import com.itheima.enums.SysErrCodeEnums;
 import java.math.RoundingMode;
+import java.text.MessageFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.apache.commons.lang3.EnumUtils;
 
 public class DemoTest {
@@ -16,7 +21,8 @@ public class DemoTest {
 //    method04("group2/M00/09/07/oYYBAGHdE2-ABP27AADAAOv5PNo673.xls");
 //    method05();
 //    method06();
-    method08("arrayIndexOutOfBoundsException");
+//    method08("arrayIndexOutOfBoundsException");
+    method09("服务商id{0}，编码{1}报名id为{2}的活动监控执行中", "asd", 111);
   }
 
   public static void method01() {
@@ -103,5 +109,17 @@ public class DemoTest {
     } else {
       System.out.println("未找到对应的对象");
     }
+  }
+
+  /**
+   * 测试格式化消息，替换{0}之类的占位符.
+   *
+   * @param str
+   * @param args
+   * @return
+   */
+  public static void method09(String str, Object... args) {
+    String result = MessageFormat.format(str, args);
+    System.out.println(result);
   }
 }
