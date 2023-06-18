@@ -23,7 +23,7 @@ public class UsernameAutoCompleteService {
     @Resource(name = "a17UserRepository")
     private UserRepository userRepository;
 
-    @PostConstruct
+//    @PostConstruct
     public void wrong() {
         userRepository.saveAll(LongStream.rangeClosed(1, 10000).mapToObj(i -> new a17UserEntity(i, randomName())).collect(Collectors.toList()));
 
