@@ -8,7 +8,7 @@ public class MySlowAppender extends ConsoleAppender {
     @Override
     protected void subAppend(Object event) {
         try {
-            // 模拟慢日志
+            // 模拟慢日志，不加无法暴露问题，虽然只有1毫秒
             TimeUnit.MILLISECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();

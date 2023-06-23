@@ -20,7 +20,7 @@ public class LoggingAsyncController {
     @GetMapping("manylog")
     public void manylog(@RequestParam(name = "count", defaultValue = "1000") int count) {
         long begin = System.currentTimeMillis();
-        IntStream.rangeClosed(1, count).forEach(i -> log.warn("log-{}", i));
+        IntStream.rangeClosed(1, count).forEach(i -> log.info("log-{}", i));
         System.out.println("took " + (System.currentTimeMillis() - begin) + " ms");
     }
 

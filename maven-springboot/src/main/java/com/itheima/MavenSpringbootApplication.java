@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MavenSpringbootApplication {
 
 	public static void main(String[] args) {
+//		System.setProperty("logging.config", "classpath:com/itheima/Java业务开发常见错误100例/a13日志/duplicate/filterwrong.xml");
 //		System.setProperty("logging.config", "classpath:com/itheima/Java业务开发常见错误100例/a13日志/duplicate/multiplelevelsfilter.xml");
 //		System.setProperty("logging.config", "classpath:com/itheima/Java业务开发常见错误100例/a13日志/async/performance_sync.xml");
 //		System.setProperty("logging.config", "classpath:com/itheima/Java业务开发常见错误100例/a13日志/async/performance_async.xml");
