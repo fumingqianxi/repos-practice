@@ -5,15 +5,15 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--  <context:component-scan base-package="com.itheima.spring实战.装配bean.model" />-->
+<!--  <context:component-scan base-package="com.itheima.springinaction.装配bean.model" />-->
 
-  <bean id="cd" class="com.itheima.spring实战.装配bean.model.SgtPeppers" />
+  <bean id="cd" class="com.itheima.springinaction.装配bean.model.SgtPeppers" />
 
-  <bean id="cdPlayer" class="com.itheima.spring实战.装配bean.model.CDPlayer">
+  <bean id="cdPlayer" class="com.itheima.springinaction.装配bean.model.CDPlayer">
     <constructor-arg ref="cd" />
   </bean>
 
-<!--  <bean id="cdPlayer" class="com.itheima.spring实战.装配bean.model.CDPlayer">-->
+<!--  <bean id="cdPlayer" class="com.itheima.springinaction.装配bean.model.CDPlayer">-->
 <!--    <property name="cd" ref="cd" />-->
 <!--  </bean>-->
 </beans>
