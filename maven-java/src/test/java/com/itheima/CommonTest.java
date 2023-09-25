@@ -130,7 +130,7 @@ public class CommonTest {
   public void method9() {
     JSONObject jsonObject = new JSONObject();
     jsonObject.put("subject", "01424362");
-    byte[] data = "kvpbE#^$wGM".getBytes();
+    byte[] data = "%%RF#Exw3gRfaeG".getBytes();
     String password = Base64.getEncoder().encodeToString(data);
     jsonObject.put("password", password);
     jsonObject.put("type", "1");

@@ -1,8 +1,5 @@
 package com.itheima;
 
-import com.itheima.mybatis.day01_eesy_02mybatis_annotation.dao.IUserDao;
-import com.itheima.mybatis.day01_eesy_02mybatis_annotation.domain.User;
-import com.itheima.mybatis.day01_eesy_03mybatis_dao.dao.impl.UserDaoImpl;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -11,66 +8,8 @@ import org.junit.Test;
 
 import java.io.InputStream;
 import java.util.Date;
-import java.util.List;
 
 public class MyBatisTest {
-
-    @Test
-    public void day01_eesy_01mybatis() throws Exception {
-        InputStream in = Resources.getResourceAsStream("SqlMapConfig.xml");
-        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-        SqlSessionFactory factory = builder.build(in);
-        SqlSession session = factory.openSession();
-        com.itheima.mybatis.day01_eesy_01mybatis.dao.IUserDao userDao = session.getMapper(com.itheima.mybatis.day01_eesy_01mybatis.dao.IUserDao.class);
-        List<com.itheima.mybatis.day01_eesy_01mybatis.domain.User> users = userDao.findAll();
-        for (com.itheima.mybatis.day01_eesy_01mybatis.domain.User user : users) {
-            System.out.println(user);
-        }
-        session.close();
-        in.close();
-    }
-
-    @Test
-    public void day01_eesy_02mybatis_annotation() throws Exception {
-        InputStream in = Resources.getResourceAsStream("SqlMapConfig.xml");
-        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-        SqlSessionFactory factory = builder.build(in);
-        SqlSession session = factory.openSession();
-        IUserDao userDao = session.getMapper(IUserDao.class);
-        List<User> users = userDao.findAll();
-        for (User user : users) {
-            System.out.println(user);
-        }
-        session.close();
-        in.close();
-    }
-
-    @Test
-    public void day01_eesy_03mybatis_dao() throws Exception {
-        InputStream in = Resources.getResourceAsStream("SqlMapConfig.xml");
-        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-        SqlSessionFactory factory = builder.build(in);
-        UserDaoImpl userDao = new UserDaoImpl(factory);
-        List<com.itheima.mybatis.day01_eesy_03mybatis_dao.domain.User> users = userDao.findAll();
-        for (com.itheima.mybatis.day01_eesy_03mybatis_dao.domain.User user : users) {
-            System.out.println(user);
-        }
-        in.close();
-    }
-
-    @Test
-    public void day01_eesy_04mybatis_design() throws Exception {
-        InputStream in = com.itheima.mybatis.day01_eesy_04mybatis_design.mybatis.io.Resources.getResourceAsStream("SqlMapConfig.xml");
-        com.itheima.mybatis.day01_eesy_04mybatis_design.mybatis.sqlsession.SqlSessionFactoryBuilder builder = new com.itheima.mybatis.day01_eesy_04mybatis_design.mybatis.sqlsession.SqlSessionFactoryBuilder();
-        com.itheima.mybatis.day01_eesy_04mybatis_design.mybatis.sqlsession.SqlSessionFactory factory = builder.build(in);
-        com.itheima.mybatis.day01_eesy_04mybatis_design.mybatis.sqlsession.SqlSession session = factory.openSession();
-        com.itheima.mybatis.day01_eesy_04mybatis_design.dao.IUserDao userDao = session.getMapper(com.itheima.mybatis.day01_eesy_04mybatis_design.dao.IUserDao.class);
-        List<com.itheima.mybatis.day01_eesy_04mybatis_design.domain.User> users = userDao.findAll();
-        for (com.itheima.mybatis.day01_eesy_04mybatis_design.domain.User user : users) {
-            System.out.println(user);
-        }
-        in.close();
-    }
 
     /**
      * 测试保存操作

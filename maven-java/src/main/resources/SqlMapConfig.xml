@@ -23,14 +23,10 @@
 
     <!-- 指定映射配置文件的位置，映射配置文件指的是每个dao独立的配置文件 -->
     <mappers>
-        <mapper resource="com/itheima/mybatis/day01_eesy_01mybatis/dao/IUserDao.xml"/>
-        <mapper resource="com/itheima/mybatis/day01_eesy_03mybatis_dao/dao/IUserDao.xml"/>
-        <mapper resource="com/itheima/mybatis/day01_eesy_04mybatis_design/dao/IUserDao.xml"/>
         <mapper resource="com/itheima/mybatis/day02_eesy_01mybatisCRUD/dao/IUserDao.xml"/>
         <mapper resource="com/itheima/mybatis/day03_eesy_01datasourceAndTx/dao/IUserDao.xml"/>
         <mapper resource="com/itheima/mybatis/day03_eesy_02dynamicSQL/dao/IUserDao.xml"/>
         <mapper resource="com/itheima/mybatis/day03_eesy_03one2many/dao/IUserDao.xml"/>
         <mapper resource="com/itheima/mybatis/day03_eesy_03one2many/dao/IAccountDao.xml"/>
-        <mapper class="com.itheima.mybatis.day01_eesy_02mybatis_annotation.dao.IUserDao"/>
     </mappers>
 </configuration>

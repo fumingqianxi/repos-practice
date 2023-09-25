@@ -1,15 +1,20 @@
 package com.itheima;
 
-import java.util.Date;
+import com.alibaba.fastjson.JSONObject;
+import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomStringUtils;
 
 @Slf4j
 public class DemoTest {
 
   public static void main(String[] args) throws Exception {
-    Date date = new Date();
-    System.out.println(date.getTime());
-    Date date1 = new Date(1687968000L * 1000L);
-    System.out.println(date1);
+    JSONObject jsonObject = new JSONObject();
+    jsonObject.put("businessId", "123");
+    System.out.println(jsonObject.toJSONString());
+    String str = UUID.randomUUID().toString().replace("-", "");
+    System.out.println(str);
+    String nonce = RandomStringUtils.randomAlphanumeric(18);
+    System.out.println(nonce);
   }
 }
