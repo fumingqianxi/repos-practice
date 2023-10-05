@@ -3,8 +3,169 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itheima.mybatis.dao.UserMapper">
+  <!-- 开启user支持二级缓存 -->
+  <cache/>
+
   <!-- 查询所有用户. -->
-  <select id="findAll" resultType="com.itheima.mybatis.dto.UserDto">
+  <select id="findAll" resultType="userdto">
+    select *
+    from user
+  </select>
+
+  <!-- 保存用户. -->
+  <insert id="saveUser" parameterType="com.itheima.mybatis.dto.UserDto">
+    <!-- 配置插入数据后，获取ID -->
+    <selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
+      select last_insert_id()
+    </selectKey>
+    insert into user(username, address, sex, birthday)
+    values (#{username}, #{address}, #{sex}, #{birthday})
+  </insert>
+
+  <!-- 更新用户. -->
+  <update id="updateUser" parameterType="com.itheima.mybatis.dto.UserDto">
+    update user
+    set username=#{username},
+        address=#{address},
+        sex=#{sex},
+        birthday=#{birthday}
+    where id = #{id}
+  </update>
+
+  <!-- 删除用户. -->
+  <delete id="deleteUser" parameterType="int">
+    delete
+    from user
+    where id = #{uid}
+  </delete>
+
+  <!-- 根据ID查询用户. -->
+  <select id="findById" parameterType="int" resultType="com.itheima.mybatis.dto.UserDto" useCache="true">
+    select *
+    from user
+    where id = #{id}
+  </select>
+
+  <!-- 根据名称模糊查询用户. -->
+  <select id="findByNameLike" resultType="com.itheima.mybatis.dto.UserDto">
+    select *
+    from user
+    where username like #{name}
+    <!-- where username like '%${value}%' -->
+  </select>
+
+  <!-- 查询总记录数. -->
+  <select id="findTotal" resultType="int">
+    select count(id)
+    from user
+  </select>
+
+  <!-- 根据queryVo条件模糊查询用户. -->
+  <select id="findUserByVo" parameterType="com.itheima.mybatis.dto.QueryVo"
+          resultType="com.itheima.mybatis.dto.UserDto">
+    select *
+    from user
+    where username like #{userDto.username}
+  </select>
+
+  <resultMap id="userMap" type="com.itheima.mybatis.dto.CamelUserDto">
+    <id property="userId" column="id"/>
+    <result property="userName" column="username"/>
+    <result property="userBirthday" column="birthday"/>
+    <result property="userSex" column="sex"/>
+    <result property="userAddress" column="address"/>
+  </resultMap>
+
+  <!-- 查询所有用户，使用结果集映射. -->
+  <select id="findAllCamelUser" resultMap="userMap">
+    select *
+    from user
+  </select>
+
+  <select id="findUserByCondition" resultType="com.itheima.mybatis.dto.UserDto">
+    <!--    select * from user where 1=1-->
+    <!--    <if test="userName != null">-->
+    <!--      and username=#{userName}-->
+    <!--    </if>-->
+    <!--    <if test="userSex != null">-->
+    <!--      and sex=#{userSex}-->
+    <!--    </if>-->
     select * from user
+    <where>
+      <if test="userName != null">
+        and username=#{userName}
+      </if>
+      <if test="userSex != null">
+        and sex=#{userSex}
+      </if>
+    </where>
+  </select>
+
+  <select id="findUserInIds" resultType="com.itheima.mybatis.dto.UserDto">
+    select * from user
+    <where>
+      <if test="ids != null and ids.size() > 0">
+        <foreach collection="ids" open="id in (" close=")" separator="," item="uid">
+          #{uid}
+        </foreach>
+      </if>
+    </where>
+  </select>
+
+  <resultMap id="userAccountsMap" type="com.itheima.mybatis.dto.UserDto">
+    <id property="id" column="id"/>
+    <result property="birthday" column="birthday"/>
+    <result property="sex" column="sex"/>
+    <result property="username" column="username"/>
+    <result property="address" column="address"/>
+    <collection property="accountDtos" ofType="com.itheima.mybatis.dto.AccountDto">
+      <id property="id" column="aid"/>
+      <result property="uid" column="uid"/>
+      <result property="money" column="money"/>
+    </collection>
+  </resultMap>
+  <!-- 查询所有用户，包含账户信息. -->
+  <select id="findAllUserIncludeAccounts" resultMap="userAccountsMap">
+    select u.*, a.id aid, a.uid, a.money
+    from user u
+           left join account a on u.id = a.uid
+  </select>
+
+  <resultMap id="userRolesMap" type="com.itheima.mybatis.dto.UserDto">
+    <id property="id" column="id"/>
+    <result property="birthday" column="birthday"/>
+    <result property="sex" column="sex"/>
+    <result property="username" column="username"/>
+    <result property="address" column="address"/>
+    <collection property="roles" ofType="RoleDto">
+      <id property="roleId" column="rid"/>
+      <result property="roleName" column="role_name"/>
+      <result property="roleDesc" column="role_desc"/>
+    </collection>
+  </resultMap>
+  <!-- 查询所有用户，包含角色信息. -->
+  <select id="findAllUserIncludeRoles" resultMap="userRolesMap">
+    SELECT u.*,
+           r.id rid,
+           r.ROLE_NAME,
+           r.ROLE_DESC
+    FROM user u
+           LEFT JOIN user_role ur ON u.id = ur.UID
+           LEFT JOIN role r ON r.id = ur.RID
+  </select>
+
+  <resultMap id="userAccountsLazyMap" type="com.itheima.mybatis.dto.UserDto">
+    <id property="id" column="id"/>
+    <result property="birthday" column="birthday"/>
+    <result property="sex" column="sex"/>
+    <result property="username" column="username"/>
+    <result property="address" column="address"/>
+    <collection property="accountDtos" ofType="com.itheima.mybatis.dto.AccountDto" column="id"
+                select="com.itheima.mybatis.dao.AccountMapper.findAccountByUid"/>
+  </resultMap>
+  <!-- 查询所有用户，包含账户信息，实现延迟加载. -->
+  <select id="findAllUserIncludeAccountsLazy" resultMap="userAccountsLazyMap">
+    select *
+    from user
   </select>
 </mapper>

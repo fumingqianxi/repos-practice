@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mybatis.dao.RoleMapper">
+  <resultMap id="roleMap" type="com.itheima.mybatis.dto.RoleDto">
+    <id column="id" property="roleId"/>
+    <result column="role_name" property="roleName"/>
+    <result property="roleDesc" column="role_desc"/>
+  </resultMap>
+  <!-- 查询所有角色. -->
+  <select id="findAllRole" resultMap="roleMap">
+    select *
+    from role
+  </select>
+
+  <resultMap id="roleUsersMap" type="com.itheima.mybatis.dto.RoleDto">
+    <id column="rid" property="roleId"/>
+    <result column="role_name" property="roleName"/>
+    <result column="role_desc" property="roleDesc"/>
+    <collection property="users" ofType="UserDto">
+      <id column="id" property="id"/>
+      <result column="username" property="username"/>
+      <result column="birthday" property="birthday"/>
+      <result column="sex" property="sex"/>
+      <result column="address" property="address"/>
+    </collection>
+  </resultMap>
+  <!-- 查询所有角色，包含用户信息. -->
+  <select id="findAllRoleIncludeUsers" resultMap="roleUsersMap">
+    SELECT
+      r.id rid,
+      r.ROLE_NAME,
+      r.ROLE_DESC,
+      u.*
+    FROM
+      role r
+        LEFT JOIN user_role ur ON r.id = ur.RID
+        LEFT JOIN USER u ON u.id = ur.UID
+  </select>
+</mapper>

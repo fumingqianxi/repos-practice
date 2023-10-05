@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mybatis.dao.AccountMapper">
+  <!-- 查询所有账号. -->
+  <select id="findAllAccount" resultType="com.itheima.mybatis.dto.AccountDto">
+    select *
+    from account
+  </select>
+
+  <!-- 根据用户ID查询所有账号. -->
+  <select id="findAccountByUid" parameterType="int" resultType="com.itheima.mybatis.dto.AccountDto">
+    select *
+    from account
+    where uid = #{uid}
+  </select>
+
+  <!-- 查询所有账号，包含用户信息. -->
+  <select id="findAllAccountUser" resultType="com.itheima.mybatis.dto.AccountUserDto">
+    select a.*, u.username, u.address
+    from account a,
+         user u
+    where a.uid = u.id
+  </select>
+
+  <resultMap id="accountUserMap" type="com.itheima.mybatis.dto.AccountDto">
+    <id property="id" column="aid"/>
+    <result property="uid" column="uid"/>
+    <result property="money" column="money"/>
+    <association property="userDto" column="uid" javaType="com.itheima.mybatis.dto.UserDto">
+      <id property="id" column="id"/>
+      <result property="username" column="username"/>
+      <result property="address" column="address"/>
+      <result property="sex" column="sex"/>
+      <result property="birthday" column="birthday"/>
+    </association>
+  </resultMap>
+  <!-- 查询所有账号，包含用户信息. -->
+  <select id="findAllAccountIncludeUser" resultMap="accountUserMap">
+    select u.*, a.id as aid, a.uid, a.money
+    from account a,
+         user u
+    where a.uid = u.id;
+  </select>
+
+  <resultMap id="accountUserLazyMap" type="com.itheima.mybatis.dto.AccountDto">
+    <id property="id" column="id"/>
+    <result property="uid" column="uid"/>
+    <result property="money" column="money"/>
+    <association property="userDto" column="uid" javaType="com.itheima.mybatis.dto.UserDto"
+                 select="com.itheima.mybatis.dao.UserMapper.findById"/>
+  </resultMap>
+  <!-- 查询所有账号，包含用户信息，实现延迟加载. -->
+  <select id="findAllAccountIncludeUserLazy" resultMap="accountUserLazyMap">
+    select *
+    from account
+  </select>
+</mapper>
