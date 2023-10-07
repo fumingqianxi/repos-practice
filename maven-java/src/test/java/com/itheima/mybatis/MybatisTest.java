@@ -75,13 +75,20 @@ public class MybatisTest {
   }
 
   @Test
-  public void testFindAll() {
+  public void testFindAll() throws Exception {
+    InputStream in = Resources.getResourceAsStream("mybatis-config.xml");
+    SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+    SqlSessionFactory sqlSessionFactory = builder.build(in);
+    SqlSession sqlSession = sqlSessionFactory.openSession();
+    UserMapper mapper = sqlSession.getMapper(UserMapper.class);
     List<UserDto> list = mapper.findAll();
     Assert.assertNotNull(list);
     log.info("用户总数为：{}", list.size());
     for (UserDto dto : list) {
       log.info("用户信息：{}", dto);
     }
+    sqlSession.close();
+    in.close();
   }
 
   @Test
