@@ -12,6 +12,6 @@ import lombok.Data;
 @Data
 public class QueryVo {
 
-    private List<Integer> ids;
-    private UserDto userDto;
+  private List<Integer> ids;
+  private UserDto userDto;
 }

@@ -228,7 +228,6 @@ public class MybatisTest {
   public void testFindUserByCondition() {
     CamelUserDto camelUserDto = new CamelUserDto();
     camelUserDto.setUserName("老王");
-    camelUserDto.setUserSex("女");
     List<UserDto> list = mapper.findUserByCondition(camelUserDto);
     log.info("用户总数为：{}", list.size());
     for (UserDto dto : list) {

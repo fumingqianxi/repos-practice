@@ -78,18 +78,28 @@
 
   <!-- 查询所有用户，使用结果集映射. -->
   <select id="findAllCamelUser" resultMap="userMap">
+<!--  <select id="findAllCamelUser" resultType="com.itheima.mybatis.dto.CamelUserDto">-->
+    --     select id       as userId,
+--            username as userName,
+--            sex      as userSex,
+--            address  as userAddress,
+--            birthday as userBirthday
+--     from user
     select *
     from user
   </select>
 
+<!--  <select id="findUserByCondition" resultType="com.itheima.mybatis.dto.UserDto">-->
+<!--    select * from user where 1=1-->
+<!--    <if test="userName != null">-->
+<!--      and username=#{userName}-->
+<!--    </if>-->
+<!--    <if test="userSex != null">-->
+<!--      and sex=#{userSex}-->
+<!--    </if>-->
+<!--  </select>-->
+
   <select id="findUserByCondition" resultType="com.itheima.mybatis.dto.UserDto">
-    <!--    select * from user where 1=1-->
-    <!--    <if test="userName != null">-->
-    <!--      and username=#{userName}-->
-    <!--    </if>-->
-    <!--    <if test="userSex != null">-->
-    <!--      and sex=#{userSex}-->
-    <!--    </if>-->
     select * from user
     <where>
       <if test="userName != null">

@@ -1,5 +1,6 @@
 package com.itheima.mybatis.dto;
 
+import java.io.Serializable;
 import lombok.Data;
 
 /**
@@ -9,7 +10,7 @@ import lombok.Data;
  * @since 2023/9/28 17:14
  */
 @Data
-public class AccountDto {
+public class AccountDto implements Serializable {
 
   private Integer id;
   private Integer uid;

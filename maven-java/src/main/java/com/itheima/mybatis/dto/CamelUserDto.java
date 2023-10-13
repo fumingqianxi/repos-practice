@@ -1,5 +1,6 @@
 package com.itheima.mybatis.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import lombok.Data;
@@ -11,7 +12,7 @@ import lombok.Data;
  * @since 2023/9/22 15:28
  */
 @Data
-public class CamelUserDto {
+public class CamelUserDto implements Serializable {
   private Integer userId;
   private String userName;
   private Date userBirthday;
