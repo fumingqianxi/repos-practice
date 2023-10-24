@@ -100,7 +100,7 @@
 			<artifactId>fluent-hc</artifactId>
 			<version>4.5.9</version>
 		</dependency>
-	</dependencies>
+  </dependencies>
 
 	<build>
 		<resources>

@@ -1,4 +1,4 @@
-package com.itheima.Java业务开发常见错误100例.a02代码加锁.controller;
+package com.itheima.Java业务开发常见错误100例.a02代码加锁;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,17 +18,77 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 对照着仿写了一遍，收获较大
+ * 死锁示例.
+ *
+ * @author 胡磊
+ * @since 2023/10/23 22:17
  */
-@RestController
-@RequestMapping("deadlock")
 @Slf4j
+@RestController
+@RequestMapping("/dead-lock")
 public class DeadLockController {
 
   private ConcurrentHashMap<String, Item> items = new ConcurrentHashMap<>();
 
   public DeadLockController() {
     IntStream.range(0, 10).forEach(i -> items.put(("item" + i), new Item("item" + i)));
+  }
+
+  /**
+   * http://localhost:45678/dead-lock/wrong.
+   *
+   * @return .
+   */
+  @GetMapping("wrong")
+  public long wrong() {
+    long begin = System.currentTimeMillis();
+    long success =
+        IntStream.rangeClosed(1, 100)
+            .parallel()
+            .mapToObj(
+                i -> {
+                  List<Item> cart = createCart();
+                  return createOrder(cart);
+                })
+            .filter(result -> result)
+            .count();
+    log.info(
+        "success:{} totalRemaining:{} took:{}ms items:{}",
+        success,
+        items.values().stream().map(item -> item.remaining).reduce(0, Integer::sum),
+        System.currentTimeMillis() - begin,
+        items);
+    return success;
+  }
+
+  /**
+   * http://localhost:45678/dead-lock/right.
+   *
+   * @return .
+   */
+  @GetMapping("right")
+  public long right() {
+    long begin = System.currentTimeMillis();
+    long success =
+        IntStream.rangeClosed(1, 100)
+            .parallel()
+            .mapToObj(
+                i -> {
+                  List<Item> cart =
+                      createCart().stream()
+                          .sorted(Comparator.comparing(Item::getName))
+                          .collect(Collectors.toList());
+                  return createOrder(cart);
+                })
+            .filter(result -> result)
+            .count();
+    log.info(
+        "success:{} totalRemaining:{} took:{}ms items:{}",
+        success,
+        items.values().stream().map(item -> item.remaining).reduce(0, Integer::sum),
+        System.currentTimeMillis() - begin,
+        items);
+    return success;
   }
 
   private List<Item> createCart() {
@@ -51,7 +111,7 @@ public class DeadLockController {
           return false;
         }
       } catch (InterruptedException e) {
-
+        log.error(e.getMessage(), e);
       }
     }
     // 获取到锁后执行业务逻辑
@@ -61,42 +121,6 @@ public class DeadLockController {
       locks.forEach(ReentrantLock::unlock);
     }
     return true;
-  }
-
-  @GetMapping("wrong")
-  public long wrong() {
-    long begin = System.currentTimeMillis();
-    long success = IntStream.rangeClosed(1, 100).parallel()
-        .mapToObj(i -> {
-          List<Item> cart = createCart();
-          return createOrder(cart);
-        })
-        .filter(result -> result)
-        .count();
-    log.info("success:{} totalRemaining:{} took:{}ms items:{}",
-             success,
-             items.entrySet().stream().map(item -> item.getValue().remaining).reduce(0, Integer::sum),
-             System.currentTimeMillis() - begin, items);
-    return success;
-  }
-
-  @GetMapping("right")
-  public long right() {
-    long begin = System.currentTimeMillis();
-    long success = IntStream.rangeClosed(1, 100).parallel()
-        .mapToObj(i -> {
-          List<Item> cart = createCart().stream()
-              .sorted(Comparator.comparing(Item::getName))
-              .collect(Collectors.toList());
-          return createOrder(cart);
-        })
-        .filter(result -> result)
-        .count();
-    log.info("success:{} totalRemaining:{} took:{}ms items:{}",
-             success,
-             items.entrySet().stream().map(item -> item.getValue().remaining).reduce(0, Integer::sum),
-             System.currentTimeMillis() - begin, items);
-    return success;
   }
 
   @Data
