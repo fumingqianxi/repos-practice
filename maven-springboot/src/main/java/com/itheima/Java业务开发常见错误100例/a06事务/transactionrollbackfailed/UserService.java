@@ -27,7 +27,7 @@ public class UserService {
 
   public int createUserWrong1(String name) {
     try{
-      this.createUserPrivate(new UserEntity(name));
+      this.createUserPrivate(new UserEntityA06(name));
     } catch (Exception ex) {
       log.error("create user failed because {}", ex.getMessage());
     }
@@ -37,7 +37,7 @@ public class UserService {
   //自调用
   public int createUserWrong2(String name) {
     try {
-      this.createUserPublic(new UserEntity(name));
+      this.createUserPublic(new UserEntityA06(name));
     } catch (Exception ex) {
       log.error("create user failed because {}", ex.getMessage());
     }
@@ -47,7 +47,7 @@ public class UserService {
   //重新注入自己
   public int createUserRight(String name) {
     try {
-      self.createUserPublic(new UserEntity(name));
+      self.createUserPublic(new UserEntityA06(name));
       log.info("查询得到的数据长度为{}", userRepository.findByName(name).size());
     } catch (Exception ex) {
       log.error("create user failed because {}", ex.getMessage());
@@ -56,7 +56,7 @@ public class UserService {
   }
 
   @Transactional
-  private void createUserPrivate(UserEntity entity) {
+  private void createUserPrivate(UserEntityA06 entity) {
     userRepository.save(entity);
     if (entity.getName().contains("test"))
       throw new RuntimeException("invalid username!");
@@ -64,7 +64,7 @@ public class UserService {
 
   //可以传播出异常
   @Transactional
-  public void createUserPublic(UserEntity entity) {
+  public void createUserPublic(UserEntityA06 entity) {
     userRepository.delete(entity);
     userRepository.save(entity);
     log.info("查询得到的数据长度为{}", userRepository.findByName(entity.getName()).size());

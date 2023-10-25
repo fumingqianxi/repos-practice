@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class POJONullController {
 
     @Autowired
-    private UserEntityRepository userEntityRepository;
+    private UserEntityRepositoryA11 userEntityRepository;
 
     @Autowired
     private UserRepository userRepository;

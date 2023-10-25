@@ -7,7 +7,7 @@ import java.util.List;
 
 
 @Repository
-public interface UserRepositoryDemo extends JpaRepository<UserEntity, Long> {
+public interface UserRepositoryDemo extends JpaRepository<UserEntityA06, Long> {
 
-    List<UserEntity> findByName(String name);
+    List<UserEntityA06> findByName(String name);
 }

@@ -38,7 +38,7 @@ public class TransactionProxyFailedController {
     @GetMapping("right2")
     public int right2(@RequestParam("name") String name) {
         try {
-            userService.createUserPublic(new UserEntity(name));
+            userService.createUserPublic(new UserEntityA06(name));
         } catch (Exception ex) {
             log.error("create user failed because {}", ex.getMessage());
         }
