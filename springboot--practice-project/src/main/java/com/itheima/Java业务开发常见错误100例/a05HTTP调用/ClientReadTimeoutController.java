@@ -1,4 +1,4 @@
-package com.itheima.Java业务开发常见错误100例.a05HTTP调用.controller;
+package com.itheima.Java业务开发常见错误100例.a05HTTP调用;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.apache.http.client.fluent.Request;
 
 /**
+ *
+ *
  * @author 胡磊
  * @since 2022/8/20 23:24
  */
