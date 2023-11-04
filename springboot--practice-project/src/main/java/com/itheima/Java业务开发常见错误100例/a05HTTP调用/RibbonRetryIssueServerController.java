@@ -1,4 +1,4 @@
-package com.itheima.Java业务开发常见错误100例.a05HTTP调用.controller;
+package com.itheima.Java业务开发常见错误100例.a05HTTP调用;
 
 import java.util.concurrent.TimeUnit;
 import javax.servlet.http.HttpServletRequest;
@@ -10,23 +10,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * Ribbon自动重试错误示例服务端.
+ *
  * @author 胡磊
- * @since 2022/8/21 11:33
+ * @since 2023/11/1 17:13
  */
 @Slf4j
 @RestController
-@RequestMapping("ribbonretryissueserver")
+@RequestMapping("/ribbon-retry-issue-server")
 public class RibbonRetryIssueServerController {
 
-  @GetMapping("sms")
-  public void sendSmsWrong(@RequestParam("mobile") String mobile, @RequestParam("message")
-                           String message, HttpServletRequest request) throws InterruptedException{
+  @GetMapping("/sms")
+  public void sendSmsWrong(
+      @RequestParam("mobile") String mobile,
+      @RequestParam("message") String message,
+      HttpServletRequest request)
+      throws InterruptedException {
     log.info("{} is called, {}=>{}", request.getRequestURL().toString(), mobile, message);
     TimeUnit.SECONDS.sleep(2);
   }
 
-  @PostMapping("sms")
-  public void sendSmsRight(@RequestParam("mobile") String mobile, @RequestParam("message") String message, HttpServletRequest request) throws InterruptedException {
+  @PostMapping("/sms")
+  public void sendSmsRight(
+      @RequestParam("mobile") String mobile,
+      @RequestParam("message") String message,
+      HttpServletRequest request)
+      throws InterruptedException {
     log.info("{} is called, {}=>{}", request.getRequestURL().toString(), mobile, message);
     TimeUnit.SECONDS.sleep(2);
   }
