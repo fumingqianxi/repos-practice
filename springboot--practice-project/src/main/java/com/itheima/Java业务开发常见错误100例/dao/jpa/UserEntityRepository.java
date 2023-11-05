@@ -1,6 +1,7 @@
 package com.itheima.Java业务开发常见错误100例.dao.jpa;
 
 import com.itheima.Java业务开发常见错误100例.entity.UserEntity;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -10,4 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @since 2023/10/25 9:46
  */
 public interface UserEntityRepository extends JpaRepository<UserEntity, Long> {
+
+  List<UserEntity> findByName(String name);
 }
