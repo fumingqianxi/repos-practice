@@ -23,6 +23,8 @@ public class UserEntity {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
+  private Long score;
+
   private String name;
 
   public UserEntity(String name) {

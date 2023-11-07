@@ -1,22 +1,21 @@
-package com.itheima.commonmistakes.a11nullvalue.pojonull;
+package com.itheima.commonmistakes.entity;
 
-import javax.persistence.Table;
-import lombok.Data;
-import org.hibernate.annotations.DynamicUpdate;
+import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
-
-import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Table;
+import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Data
 @Entity
 @DynamicUpdate
 @Table(name = "user")
-public class UserEntityA11 {
+public class A11UserEntity {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;

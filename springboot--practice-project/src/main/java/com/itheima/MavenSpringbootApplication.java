@@ -51,7 +51,7 @@ public class MavenSpringbootApplication {
 		return redisTemplate;
 	}
 
-  @Bean
+//  @Bean
   public ObjectMapper objectMapper() {
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.configure(SerializationFeature.WRITE_ENUMS_USING_INDEX, true);

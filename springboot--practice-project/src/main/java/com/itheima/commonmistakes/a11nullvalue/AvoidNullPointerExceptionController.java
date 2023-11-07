@@ -56,7 +56,11 @@ public class AvoidNullPointerExceptionController {
 
   private List<String> wrongMethod(FooService fooService, Integer i, String s, String t) {
     log.info(
-        "result {} {} {} {}", i + 1, s.equals("OK"), s.equals(t), new ConcurrentHashMap<String, String>().put(null, null));
+        "result {} {} {} {}",
+        i + 1,
+        s.equals("OK"),
+        s.equals(t),
+        new ConcurrentHashMap<String, String>().put(null, null));
     if (fooService.getBarService().bar().equals("OK")) {
       log.info("OK");
     }
