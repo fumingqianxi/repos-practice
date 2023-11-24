@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 <!--  <properties resource="prop.properties">-->
-  <properties url="file:///D:/IdeaProjects/repos-practice/maven-java/src/main/resources\prop.properties">
+  <properties url="file:///D:/IdeaProjects/repos-practice/maven-practice-project/src/main/resources\prop.properties">
 <!--    <property name="driver" value="com.mysql.jdbc.Driver"/>-->
 <!--    <property name="url" value="jdbc:mysql://localhost:3306/mybatis"/>-->
 <!--    <property name="username" value="root"/>-->
