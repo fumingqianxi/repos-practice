@@ -27,9 +27,9 @@ public class SpittrConfig {
   public DataSource dataSource() {
     DriverManagerDataSource ds = new DriverManagerDataSource();
     ds.setDriverClassName("com.mysql.jdbc.Driver");
-    ds.setUrl("jdbc:mysql://localhost:3306/dev");
-    ds.setUsername("root");
-    ds.setPassword("0510");
+    ds.setUrl("jdbc:mysql://polardb-hl.mysql.polardb.rds.aliyuncs.com:3306/dev");
+    ds.setUsername("hl_dev");
+    ds.setPassword("hl&12345");
     return ds;
   }
 
