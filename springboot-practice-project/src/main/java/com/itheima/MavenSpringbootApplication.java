@@ -20,11 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class MavenSpringbootApplication {
 
 	public static void main(String[] args) {
-//		System.setProperty("logging.config", "classpath:com/itheima/Java业务开发常见错误100例/a13日志/duplicate/filterwrong.xml");
-//		System.setProperty("logging.config", "classpath:com/itheima/Java业务开发常见错误100例/a13日志/duplicate/multiplelevelsfilter.xml");
-//		System.setProperty("logging.config", "classpath:com/itheima/Java业务开发常见错误100例/a13日志/async/performance_sync.xml");
-//		System.setProperty("logging.config", "classpath:com/itheima/Java业务开发常见错误100例/a13日志/async/performance_async.xml");
-//		System.setProperty("logging.config", "classpath:com/itheima/Java业务开发常见错误100例/a13日志/async/asyncwrong.xml");
+//		System.setProperty("logging.config", "classpath:com/itheima/commonmistakes/a13logging/duplicate/loggerwrong.xml");
+//		System.setProperty("logging.config", "classpath:com/itheima/commonmistakes/a13logging/duplicate/loggerright1.xml");
+//		System.setProperty("logging.config", "classpath:com/itheima/commonmistakes/a13logging/duplicate/loggerright2.xml");
+//		System.setProperty("logging.config", "classpath:com/itheima/commonmistakes/a13logging/duplicate/filterwrong.xml");
+//		System.setProperty("logging.config", "classpath:com/itheima/commonmistakes/a13logging/duplicate/filterright.xml");
+//		System.setProperty("logging.config", "classpath:com/itheima/commonmistakes/a13logging/async/performance_sync.xml");
+//		System.setProperty("logging.config", "classpath:com/itheima/commonmistakes/a13logging/async/performance_async.xml");
+//		System.setProperty("logging.config", "classpath:com/itheima/commonmistakes/a13logging/async/asyncwrong.xml");
+//		System.setProperty("logging.config", "classpath:com/itheima/commonmistakes/a13logging/duplicate/multiplelevelsfilter.xml");
 		SpringApplication.run(MavenSpringbootApplication.class, args);
 	}
 
