@@ -1,4 +1,4 @@
-package com.itheima.commonmistakes.a14文件IO.badencodingissue;
+package com.itheima.commonmistakes.a14io.badencodingissue;
 
 import java.io.FileInputStream;
 import java.io.FileReader;
@@ -12,8 +12,10 @@ import org.apache.commons.codec.Charsets;
 import org.apache.commons.codec.binary.Hex;
 
 /**
+ * 文件读写的字符编码问题示例.
+ *
  * @author 胡磊
- * @since 2022/11/6 21:46
+ * @since 2024/2/8 16:17
  */
 @Slf4j
 public class FileBadEncodingIssueApplication {
@@ -28,7 +30,8 @@ public class FileBadEncodingIssueApplication {
   private static void init() throws IOException {
     Files.deleteIfExists(Paths.get("hello.txt"));
     Files.write(Paths.get("hello.txt"), "你好hi".getBytes(Charset.forName("GBK")));
-    log.info("bytes:{}", Hex.encodeHexString(Files.readAllBytes(Paths.get("hello.txt"))).toUpperCase());
+    log.info(
+        "bytes:{}", Hex.encodeHexString(Files.readAllBytes(Paths.get("hello.txt"))).toUpperCase());
   }
 
   private static void wrong() throws IOException {
@@ -45,7 +48,8 @@ public class FileBadEncodingIssueApplication {
     log.info("result:{}", content);
 
     Files.write(Paths.get("hello2.txt"), "你好hi".getBytes(Charsets.UTF_8));
-    log.info("bytes:{}", Hex.encodeHexString(Files.readAllBytes(Paths.get("hello2.txt"))).toUpperCase());
+    log.info(
+        "bytes:{}", Hex.encodeHexString(Files.readAllBytes(Paths.get("hello2.txt"))).toUpperCase());
   }
 
   private static void right1() throws IOException {
@@ -53,7 +57,8 @@ public class FileBadEncodingIssueApplication {
     char[] chars = new char[10];
     String content = "";
     try (FileInputStream fileInputStream = new FileInputStream("hello.txt");
-         InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, Charset.forName("GBK"))) {
+         InputStreamReader inputStreamReader = new InputStreamReader(
+             fileInputStream, Charset.forName("GBK"))) {
       int count;
       while ((count = inputStreamReader.read(chars)) != -1) {
         content += new String(chars, 0, count);
@@ -64,6 +69,9 @@ public class FileBadEncodingIssueApplication {
   }
 
   private static void right2() throws IOException {
-    log.info("result: {}", Files.readAllLines(Paths.get("hello.txt"), Charset.forName("GBK")).stream().findFirst().orElse(""));
+    log.info(
+        "result: {}",
+        Files.readAllLines(Paths.get("hello.txt"), Charset.forName("GBK")).stream().findFirst()
+            .orElse(""));
   }
 }

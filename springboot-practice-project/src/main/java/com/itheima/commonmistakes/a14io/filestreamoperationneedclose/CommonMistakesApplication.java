@@ -1,4 +1,4 @@
-package com.itheima.commonmistakes.a14文件IO.filestreamoperationneedclose;
+package com.itheima.commonmistakes.a14io.filestreamoperationneedclose;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StopWatch;
@@ -14,18 +14,25 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static java.nio.file.StandardOpenOption.APPEND;
 import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 
+/**
+ * 文件流未关闭问题示例.
+ *
+ * @author 胡磊
+ * @since 2024/2/8 16:17
+ */
 @Slf4j
 public class CommonMistakesApplication {
 
 //  public static void main(String[] args) throws IOException {
 //    init();
-////    linesTest();
-////    readLargeFileWrong();
-////    readLargeFileRight();
-////    wrong();
+//    linesTest();
+//    readLargeFileWrong();
+//    readLargeFileRight();
+//    wrong();
 //    right();
 //  }
 
@@ -58,23 +65,23 @@ public class CommonMistakesApplication {
     String payload =
         IntStream.rangeClosed(1, 1000).mapToObj(__ -> "a").collect(Collectors.joining(""))
             + UUID.randomUUID().toString();
-//    Files.deleteIfExists(Paths.get("large.txt"));
-//    IntStream.rangeClosed(1, 10)
-//        .forEach(
-//            __ -> {
-//              try {
-//                Files.write(
-//                    Paths.get("large.txt"),
-//                    IntStream.rangeClosed(1, 500000)
-//                        .mapToObj(i -> payload)
-//                        .collect(Collectors.toList()),
-//                    UTF_8,
-//                    CREATE,
-//                    APPEND);
-//              } catch (IOException e) {
-//                e.printStackTrace();
-//              }
-//            });
+    Files.deleteIfExists(Paths.get("large.txt"));
+    IntStream.rangeClosed(1, 10)
+        .forEach(
+            __ -> {
+              try {
+                Files.write(
+                    Paths.get("large.txt"),
+                    IntStream.rangeClosed(1, 500000)
+                        .mapToObj(i -> payload)
+                        .collect(Collectors.toList()),
+                    UTF_8,
+                    CREATE,
+                    APPEND);
+              } catch (IOException e) {
+                e.printStackTrace();
+              }
+            });
     Files.write(Paths.get("demo.txt"),
                 IntStream.rangeClosed(1, 10).mapToObj(i -> UUID.randomUUID().toString()).collect(Collectors.toList())
         , UTF_8, CREATE, TRUNCATE_EXISTING);
