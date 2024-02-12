@@ -25,4 +25,11 @@ public class User {
   private String nickname;
   private Integer age;
   private Date createDate = new Date();
+  private String salt;
+  private String password;
+  private String idCard;//脱敏的身份证
+  private Long idCardCipherId;//身份证加密ID
+  private String idCardCipherText;//身份证密文
+  private Long nameCipherId;//姓名加密ID
+  private String nameCipherText;//姓名密文
 }
