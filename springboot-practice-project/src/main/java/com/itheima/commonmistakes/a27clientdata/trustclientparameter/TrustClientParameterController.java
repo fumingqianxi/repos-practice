@@ -7,8 +7,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -60,9 +58,7 @@ public class TrustClientParameterController {
   @PostMapping("/better")
   @ResponseBody
   public String better(
-      @RequestParam("countryId")
-      @Min(value = 1, message = "非法参数")
-      @Max(value = 3, message = "非法参数") int countryId) {
+      @RequestParam("countryId") int countryId) {
     return allCountries.get(countryId).getName();
   }
 }

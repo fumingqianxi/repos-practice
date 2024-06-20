@@ -1,4 +1,4 @@
-package com.itheima.commonmistakes.entity;
+package com.itheima.entity;
 
 import static javax.persistence.GenerationType.IDENTITY;
 

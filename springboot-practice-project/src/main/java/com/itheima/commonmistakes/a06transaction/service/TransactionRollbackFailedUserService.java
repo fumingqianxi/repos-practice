@@ -1,7 +1,7 @@
 package com.itheima.commonmistakes.a06transaction.service;
 
-import com.itheima.commonmistakes.dao.jpa.UserEntityRepository;
-import com.itheima.commonmistakes.entity.UserEntity;
+import com.itheima.dao.jpa.UserEntityRepository;
+import com.itheima.entity.UserEntity;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;

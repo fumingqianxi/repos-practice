@@ -1,4 +1,4 @@
-package com.itheima.commonmistakes.entity;
+package com.itheima.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

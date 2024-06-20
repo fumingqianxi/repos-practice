@@ -1,7 +1,7 @@
 package com.itheima.commonmistakes.a30sensitivedata.storepassword;
 
-import com.itheima.commonmistakes.dao.jpa.UserRepository;
-import com.itheima.commonmistakes.entity.User;
+import com.itheima.dao.jpa.UserRepository;
+import com.itheima.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;

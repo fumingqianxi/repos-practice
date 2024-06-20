@@ -1,10 +1,10 @@
 package com.itheima.commonmistakes.a30sensitivedata.storeidcard;
 
-import com.itheima.commonmistakes.dao.jpa.UserRepository;
-import com.itheima.commonmistakes.entity.User;
+import com.itheima.dao.jpa.UserRepository;
+import com.itheima.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Hex;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.util.ByteUtils;
 import org.springframework.web.bind.annotation.GetMapping;

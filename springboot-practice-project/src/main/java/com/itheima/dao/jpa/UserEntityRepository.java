@@ -1,6 +1,6 @@
-package com.itheima.commonmistakes.dao.jpa;
+package com.itheima.dao.jpa;
 
-import com.itheima.commonmistakes.entity.UserEntity;
+import com.itheima.entity.UserEntity;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -1,6 +1,6 @@
-package com.itheima.commonmistakes.dao.jpa;
+package com.itheima.dao.jpa;
 
-import com.itheima.commonmistakes.entity.User;
+import com.itheima.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

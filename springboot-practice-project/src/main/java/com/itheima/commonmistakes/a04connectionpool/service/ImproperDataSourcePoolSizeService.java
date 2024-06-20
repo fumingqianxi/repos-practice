@@ -1,7 +1,7 @@
 package com.itheima.commonmistakes.a04connectionpool.service;
 
-import com.itheima.commonmistakes.dao.jpa.UserEntityRepository;
-import com.itheima.commonmistakes.entity.UserEntity;
+import com.itheima.dao.jpa.UserEntityRepository;
+import com.itheima.entity.UserEntity;
 import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

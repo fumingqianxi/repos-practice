@@ -1,7 +1,7 @@
 package com.itheima.commonmistakes.a30sensitivedata.storeidcard;
 
-import com.itheima.commonmistakes.dao.jpa.CipherRepository;
-import com.itheima.commonmistakes.entity.CipherData;
+import com.itheima.dao.jpa.CipherRepository;
+import com.itheima.entity.CipherData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

@@ -1,7 +1,7 @@
 package com.itheima.commonmistakes.a06transaction;
 
 import com.itheima.commonmistakes.a06transaction.service.TransactionPropagationUserService;
-import com.itheima.commonmistakes.entity.UserEntity;
+import com.itheima.entity.UserEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
